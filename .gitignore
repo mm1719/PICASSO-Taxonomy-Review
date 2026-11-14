@@ -1,0 +1,17 @@
+node_modules/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+.env
+.env.*
+*.log
+__pycache__/
+*.pyc
+research-data/
+datasets/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+# Only explicitly reviewed synthetic public fixtures belong in this candidate.

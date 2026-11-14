@@ -1,0 +1,37 @@
+{
+  "fixture_kind": "synthetic_not_research_data",
+  "generator": "scripts/generate_synthetic_demo.py",
+  "public_artifacts": {
+    "class_image_samples.json": {
+      "path": "public/data/class_image_samples.json",
+      "sha256": "fcf659b0997e65bbb17c12ca9fc6311fbf626241380ebaf96fab7912c9a9373f",
+      "bytes": 872
+    },
+    "invalid_label_groups.json": {
+      "path": "public/data/invalid_label_groups.json",
+      "sha256": "1f5340cbaca8c4401e9819b982ae03cbe77275ac80213f7f97bcadce06e7066f",
+      "bytes": 3653
+    },
+    "mapping_status.json": {
+      "path": "public/data/mapping_status.json",
+      "sha256": "63a5c02f1ce8b70daee3fb8f05b8d7dae8e24ccad59aa2d08c9730fe6747b220",
+      "bytes": 4065
+    },
+    "taxonomy_tree.json": {
+      "path": "public/data/taxonomy_tree.json",
+      "sha256": "0b0163fef637a9b229995e9337f82e49fb12e76ba653ef111f14c4fef10b243d",
+      "bytes": 3497
+    },
+    "valid_class_candidates.csv": {
+      "path": "public/data/valid_class_candidates.csv",
+      "sha256": "6fa8a88276822f3eab77c43ee88c3e0b72d67f017a8378e213269d406832ee50",
+      "bytes": 2025
+    },
+    "worms_lineages.json": {
+      "path": "public/data/worms_lineages.json",
+      "sha256": "20bd5cefe1f1cd060b26543b61011e1c4ccf0dbb9277da0844f7d7faaebd4a15",
+      "bytes": 381
+    }
+  },
+  "notes": "Every ID, label, count, review rule and diagram is invented for this candidate. No original public/data file was copied."
+}

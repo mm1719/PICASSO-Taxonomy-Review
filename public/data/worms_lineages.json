@@ -1,0 +1,22 @@
+{
+  "demo_taxon_a": {
+    "synthetic": true,
+    "nodes": [
+      {
+        "aphia_id": "demo_taxon_a",
+        "name": "Fictional rounded group",
+        "rank": "Class"
+      }
+    ]
+  },
+  "demo_taxon_b": {
+    "synthetic": true,
+    "nodes": [
+      {
+        "aphia_id": "demo_taxon_b",
+        "name": "Fictional elongated group",
+        "rank": "Class"
+      }
+    ]
+  }
+}

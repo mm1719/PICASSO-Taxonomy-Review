@@ -1,0 +1,138 @@
+{
+  "generated_at_utc": "2026-11-14T00:00:00Z",
+  "source_targets": "synthetic targets",
+  "history_dir": "synthetic/history",
+  "export_fields": [
+    "action",
+    "source_id",
+    "target_id",
+    "source_alias",
+    "target_alias",
+    "notes"
+  ],
+  "target_count": 3,
+  "targets": [
+    {
+      "source_id": "demo_taxon_a",
+      "source_alias": "Fictional rounded group",
+      "image_count": 20,
+      "valid_statuses": "valid",
+      "invalid_reasons": "",
+      "risk_flags": "",
+      "special_tags": "",
+      "dataset_ids": "synthetic_alpha|synthetic_beta",
+      "source_labels": "Fictional rounded group"
+    },
+    {
+      "source_id": "demo_taxon_b",
+      "source_alias": "Fictional elongated group",
+      "image_count": 6,
+      "valid_statuses": "valid",
+      "invalid_reasons": "",
+      "risk_flags": "",
+      "special_tags": "",
+      "dataset_ids": "synthetic_alpha|synthetic_beta",
+      "source_labels": "Fictional elongated group"
+    },
+    {
+      "source_id": "ntc_001",
+      "source_alias": "Synthetic debris",
+      "image_count": 4,
+      "valid_statuses": "invalid",
+      "invalid_reasons": "",
+      "risk_flags": "",
+      "special_tags": "",
+      "dataset_ids": "synthetic_alpha|synthetic_beta",
+      "source_labels": "Synthetic debris"
+    }
+  ],
+  "latest_history_id": "synthetic-review-2",
+  "histories": [
+    {
+      "history_id": "synthetic-review-1",
+      "file_name": "synthetic-review-1.csv",
+      "path": "synthetic/history/review-1.csv",
+      "row_count": 3,
+      "explicit_row_count": 0,
+      "merge_count": 0,
+      "drop_count": 0,
+      "warning_count": 0,
+      "warnings": [],
+      "rows": [
+        {
+          "action": "keep",
+          "source_id": "demo_taxon_a",
+          "target_id": "",
+          "source_alias": "Fictional rounded group",
+          "target_alias": "",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        },
+        {
+          "action": "keep",
+          "source_id": "demo_taxon_b",
+          "target_id": "",
+          "source_alias": "Fictional elongated group",
+          "target_alias": "",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        },
+        {
+          "action": "keep",
+          "source_id": "ntc_001",
+          "target_id": "",
+          "source_alias": "Synthetic debris",
+          "target_alias": "",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        }
+      ]
+    },
+    {
+      "history_id": "synthetic-review-2",
+      "file_name": "synthetic-review-2.csv",
+      "path": "synthetic/history/review-2.csv",
+      "row_count": 3,
+      "explicit_row_count": 2,
+      "merge_count": 1,
+      "drop_count": 1,
+      "warning_count": 0,
+      "warnings": [],
+      "rows": [
+        {
+          "action": "keep",
+          "source_id": "demo_taxon_a",
+          "target_id": "",
+          "source_alias": "Fictional rounded group",
+          "target_alias": "",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        },
+        {
+          "action": "merge",
+          "source_id": "demo_taxon_b",
+          "target_id": "demo_taxon_a",
+          "source_alias": "Fictional elongated group",
+          "target_alias": "Fictional rounded group",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        },
+        {
+          "action": "drop",
+          "source_id": "ntc_001",
+          "target_id": "",
+          "source_alias": "Synthetic debris",
+          "target_alias": "",
+          "notes": "Synthetic demonstration, not a biological mapping",
+          "validation_status": "ok",
+          "validation_message": ""
+        }
+      ]
+    }
+  ]
+}

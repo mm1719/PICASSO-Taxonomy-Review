@@ -1,0 +1,35 @@
+{
+  "synthetic_alpha::Rounded form": [
+    {
+      "dataset_id": "synthetic_alpha",
+      "label": "Rounded form",
+      "image_id": "valid-1",
+      "thumbnail_url": "/samples/valid-1.svg",
+      "source_ref": "synthetic/valid-1.svg",
+      "width": "240",
+      "height": "180"
+    }
+  ],
+  "synthetic_beta::Rounded form": [
+    {
+      "dataset_id": "synthetic_beta",
+      "label": "Rounded form",
+      "image_id": "valid-2",
+      "thumbnail_url": "/samples/valid-2.svg",
+      "source_ref": "synthetic/valid-2.svg",
+      "width": "240",
+      "height": "180"
+    }
+  ],
+  "synthetic_alpha::Elongated form": [
+    {
+      "dataset_id": "synthetic_alpha",
+      "label": "Elongated form",
+      "image_id": "valid-3",
+      "thumbnail_url": "/samples/valid-3.svg",
+      "source_ref": "synthetic/valid-3.svg",
+      "width": "240",
+      "height": "180"
+    }
+  ]
+}

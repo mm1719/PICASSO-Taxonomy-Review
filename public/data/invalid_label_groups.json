@@ -1,0 +1,130 @@
+{
+  "tables": {
+    "non_taxonomic_category": [
+      {
+        "group_key": "synthetic-invalid-1",
+        "pseudo_aphia_id": "ntc_001",
+        "sample_key": "synthetic-invalid-1",
+        "aliases": [
+          "Synthetic debris"
+        ],
+        "status": "Non-Taxonomic Category",
+        "dataset_ids": [
+          "synthetic_alpha"
+        ],
+        "total_image_count": 4,
+        "include_valid_tree_overlap": false,
+        "invalid_reason_count": 1,
+        "valid_image_count": 0,
+        "invalid_image_count": 4,
+        "datasets": [
+          {
+            "dataset_id": "synthetic_alpha",
+            "instrument": "Demo imager A",
+            "license": "Not a research dataset",
+            "license_status": "synthetic",
+            "aliases": [
+              "Synthetic debris"
+            ],
+            "image_count": 4,
+            "reasons": [
+              "Invented review example"
+            ],
+            "source_examples": [
+              "synthetic/review-1.csv"
+            ],
+            "worms_sources": [],
+            "valid_tree_entry": "no",
+            "invalid_reason_count": 1,
+            "valid_image_count": 0,
+            "invalid_image_count": 4
+          }
+        ]
+      }
+    ],
+    "taxonomic_mismatch": [
+      {
+        "group_key": "synthetic-invalid-2",
+        "pseudo_aphia_id": "tm_001",
+        "sample_key": "synthetic-invalid-2",
+        "aliases": [
+          "Rounded form"
+        ],
+        "status": "Taxonomic Mismatch",
+        "dataset_ids": [
+          "synthetic_beta"
+        ],
+        "total_image_count": 8,
+        "include_valid_tree_overlap": true,
+        "invalid_reason_count": 1,
+        "valid_image_count": 8,
+        "invalid_image_count": 8,
+        "datasets": [
+          {
+            "dataset_id": "synthetic_beta",
+            "instrument": "Demo imager B",
+            "license": "Not a research dataset",
+            "license_status": "synthetic",
+            "aliases": [
+              "Rounded form"
+            ],
+            "image_count": 8,
+            "reasons": [
+              "Invented review example"
+            ],
+            "source_examples": [
+              "synthetic/review-2.csv"
+            ],
+            "worms_sources": [],
+            "valid_tree_entry": "yes",
+            "invalid_reason_count": 1,
+            "valid_image_count": 8,
+            "invalid_image_count": 8
+          }
+        ]
+      }
+    ]
+  },
+  "samples": {
+    "synthetic-invalid-1": [
+      {
+        "dataset_id": "synthetic_alpha",
+        "label": "Synthetic debris",
+        "image_id": "invalid-1",
+        "thumbnail_url": "/invalid-samples/invalid-1.svg",
+        "source_ref": "synthetic/invalid-1.svg",
+        "width": "240",
+        "height": "180"
+      }
+    ],
+    "synthetic-invalid-2": [
+      {
+        "dataset_id": "synthetic_beta",
+        "label": "Rounded form",
+        "image_id": "invalid-2",
+        "thumbnail_url": "/invalid-samples/invalid-2.svg",
+        "source_ref": "synthetic/invalid-2.svg",
+        "width": "240",
+        "height": "180"
+      }
+    ]
+  },
+  "summary": {
+    "source": "synthetic fixtures only",
+    "sample_limit_per_dataset": 8,
+    "excluded_valid_tree_overlap_default": false,
+    "table_counts": {
+      "non_taxonomic_category": 1,
+      "taxonomic_mismatch": 1
+    },
+    "table_image_counts": {
+      "non_taxonomic_category": 4,
+      "taxonomic_mismatch": 8
+    },
+    "evidence_table_total_group_count": 2,
+    "evidence_table_total_image_count": 12,
+    "unique_group_count": 2,
+    "total_image_count": 12,
+    "total_image_count_semantics": "unique_dataset_invalid_group_image_union"
+  }
+}

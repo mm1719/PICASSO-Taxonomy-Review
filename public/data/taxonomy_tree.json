@@ -1,0 +1,120 @@
+{
+  "type": "root",
+  "name": "Synthetic taxonomy",
+  "image_count": 26,
+  "entry_count": 3,
+  "dataset_class_entry_count": 3,
+  "unique_selected_aphia_id_count": 2,
+  "unique_candidate_image_count": 26,
+  "placement_weighted_image_count": 26,
+  "dataset_colors": {
+    "synthetic_alpha": "#2563eb",
+    "synthetic_beta": "#16a34a"
+  },
+  "dataset_labels": {
+    "synthetic_alpha": "Synthetic collection A",
+    "synthetic_beta": "Synthetic collection B"
+  },
+  "dataset_instruments": {
+    "synthetic_alpha": "Demo imager A",
+    "synthetic_beta": "Demo imager B"
+  },
+  "children": [
+    {
+      "type": "taxon",
+      "name": "Fictional rounded group",
+      "rank": "Class",
+      "aphia_id": "demo_taxon_a",
+      "image_count": 20,
+      "entry_count": 2,
+      "datasets": [
+        "synthetic_alpha",
+        "synthetic_beta"
+      ],
+      "risk_flags": [
+        "contaminated"
+      ],
+      "children": [
+        {
+          "type": "dataset_class",
+          "name": "Rounded form",
+          "entry_id": "synthetic_alpha::Rounded form",
+          "placement_id": "synthetic_alpha::Rounded form::demo_taxon_a",
+          "dataset_id": "synthetic_alpha",
+          "dataset_label": "Synthetic collection A",
+          "instrument": "Demo imager A",
+          "original_label": "Rounded form",
+          "selected_aphia_id": "demo_taxon_a",
+          "selected_aphia_source": "synthetic_example_not_WoRMS",
+          "rank": "Class",
+          "image_count": 12,
+          "entry_count": 1,
+          "risk_flags": [],
+          "special_tags": [
+            "juvenile"
+          ],
+          "lineage_notes": [],
+          "children": []
+        },
+        {
+          "type": "dataset_class",
+          "name": "Rounded form",
+          "entry_id": "synthetic_beta::Rounded form",
+          "placement_id": "synthetic_beta::Rounded form::demo_taxon_a",
+          "dataset_id": "synthetic_beta",
+          "dataset_label": "Synthetic collection B",
+          "instrument": "Demo imager B",
+          "original_label": "Rounded form",
+          "selected_aphia_id": "demo_taxon_a",
+          "selected_aphia_source": "synthetic_example_not_WoRMS",
+          "rank": "Class",
+          "image_count": 8,
+          "entry_count": 1,
+          "risk_flags": [
+            "contaminated"
+          ],
+          "special_tags": [],
+          "lineage_notes": [],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "taxon",
+      "name": "Fictional elongated group",
+      "rank": "Class",
+      "aphia_id": "demo_taxon_b",
+      "image_count": 6,
+      "entry_count": 1,
+      "datasets": [
+        "synthetic_alpha"
+      ],
+      "risk_flags": [
+        "broad_class"
+      ],
+      "children": [
+        {
+          "type": "dataset_class",
+          "name": "Elongated form",
+          "entry_id": "synthetic_alpha::Elongated form",
+          "placement_id": "synthetic_alpha::Elongated form::demo_taxon_b",
+          "dataset_id": "synthetic_alpha",
+          "dataset_label": "Synthetic collection A",
+          "instrument": "Demo imager A",
+          "original_label": "Elongated form",
+          "selected_aphia_id": "demo_taxon_b",
+          "selected_aphia_source": "synthetic_example_not_WoRMS",
+          "rank": "Class",
+          "image_count": 6,
+          "entry_count": 1,
+          "risk_flags": [
+            "broad_class"
+          ],
+          "special_tags": [],
+          "lineage_notes": [],
+          "children": []
+        }
+      ]
+    }
+  ]
+}
