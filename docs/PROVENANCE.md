@@ -27,4 +27,6 @@ The source candidate contains no downloaded biological images, API cache, contac
 
 ## Remaining review
 
-Complete real-browser visual/accessibility QA before treating this as a polished public demo. Any future grant of a reuse license, deployment, data acquisition or research-data distribution requires its own scoped decision. These checks are separate from passing unit tests.
+On 2026-11-15, the owner separately authorized an independent Vercel deployment of this synthetic showcase, connected only to `mm1719/PICASSO-Taxonomy-Review`. The [public demo](https://picasso-taxonomy-review.vercel.app) does not replace the original Phase 3 website or distribute its research data. This authorization does not grant a reuse license for the project code.
+
+Complete real-browser visual/accessibility QA before treating this as a polished public demo. Any future grant of a reuse license, data acquisition or research-data distribution requires its own scoped decision. These checks are separate from passing unit tests and HTTP deployment checks.

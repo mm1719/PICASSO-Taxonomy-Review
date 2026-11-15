@@ -80,3 +80,16 @@ The owner authorized a separate Vercel project for `mm1719/PICASSO-Taxonomy-Revi
 - Application source, synthetic fixtures and locked dependency versions are unchanged. Only the root package's Node engine metadata changed in the lockfile.
 
 This checkpoint is local deployment preparation, not evidence of a live site or real-browser acceptance.
+
+## 2026-11-15 independent deployment verification
+
+- Public URL: <https://picasso-taxonomy-review.vercel.app>.
+- Vercel project: `picasso-taxonomy-review` (`prj_eRQvawqrloeeipZRep8zutyE0bwD`), in `masonys-projects`. Git connection: `mm1719/PICASSO-Taxonomy-Review`, production branch `main`, repository-root build, Node `24.x`.
+- First production deployment: `dpl_21JCPdVbV7XtxUhmDcSAPsxDM4VG`, **READY**, from commit `0e1e9f27a72dabd851da3bd29cba7e3a8defa919`. Build logs confirm the intended GitHub repository, branch and commit, a clean lockfile install, synthetic-data validation, TypeScript/Vite build and both license-artifact tests. The install reported **0 vulnerabilities**.
+- Anonymous HTTP checks for `/`, `/valid`, `/invalid` and `/mapping`: **200**, with SHA-256 equal to the local built index. No login, share token or protection bypass was used.
+- All **16** runtime/notice files, including the seven JSON/CSV assets, five synthetic diagrams, HTML, CSS, JavaScript and license notice: **200** with exact SHA-256 equality to the local Node 24 build. JSON responses also parsed successfully.
+- An initial all-file check also requested the non-runtime JavaScript source map and received **403**. The subsequent runtime-file check excluded `.map` files; this was not a missing runtime asset. Source-map access was not relaxed or bypassed. The rest of the deployment retained Vercel's default protection settings.
+- The canonical domain is verified and assigned to the new project and deployment. An explicit add-domain request returned **409** because Vercel had already assigned it during deployment; read-only project-domain and alias lookups confirmed the intended ownership. No domain was moved from another project.
+- The original Phase 3 Vercel project's metadata, domains, configuration timestamp and production deployment ID were byte-for-byte unchanged between the before/after API responses. Neither original repository nor research data was edited or rebuilt.
+
+Remaining limits: the connected browser host was still unavailable when checked. Real-browser CSV file selection/download, draft prompts, visual layout, accessibility and cross-browser behavior remain unverified; their existing jsdom tests passed. No alternative browser was installed or launched. The platform's `cache-dir` npm warning and the existing `whatwg-encoding` deprecation warning did not fail the build. This is a hosted synthetic demonstration, not a research-data or code-license release.

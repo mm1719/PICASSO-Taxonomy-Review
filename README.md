@@ -16,6 +16,14 @@ The browser export does **not** update a server, an original dataset, or a train
 
 Drafts live in memory, not browser storage. Repeated clicks on the active edit mode do not reset a draft. Returning from history to edit asks before replacing a changed draft; cancel resumes that draft. Export before reloading or leaving the mapping section.
 
+## Public demo
+
+[Open the synthetic demo](https://picasso-taxonomy-review.vercel.app).
+
+This independent Vercel project is connected only to `mm1719/PICASSO-Taxonomy-Review`, with `main` as its production branch and the repository root as its build root. It does not replace or synchronize with the original Phase 3 website or research data. No environment variables or backend services are required.
+
+Vercel uses the settings in `vercel.json`: a locked dependency install, the full build including synthetic-data and license-notice checks, and `dist` as the output. The primary URL is public; generated deployment URLs retain Vercel's default protection. See [the deployment validation record](docs/VALIDATION.md) for tested behavior and remaining browser checks.
+
 ## Run locally
 
 Use the Node version in `.nvmrc` (24.22.3) or a compatible Node 24.x version, plus Python 3 for fixture generation and build-time asset checks. The Node major is pinned to keep local checks and Vercel builds aligned.
