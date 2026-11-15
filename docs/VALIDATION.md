@@ -1,6 +1,6 @@
 # Validation record
 
-## Active change: licensed dataset subset (2026-11-15)
+## Completed change: licensed dataset subset (2026-11-15)
 
 Owner-approved scope: publish only LifeWatch and MedPlanktonSet, at most five distinct images per dataset/source label across all views, preserving reviewed lineage, risk flags and stable mapping IDs. Original Phase 3 inputs are read-only. Mapping history covers LifeWatch only; MedPlanktonSet has no formal mapping history and must not acquire invented keep decisions. Historical merge destinations outside LifeWatch may appear as zero-image reference targets, without other datasets' images or counts.
 
@@ -8,7 +8,7 @@ Owner-approved scope: publish only LifeWatch and MedPlanktonSet, at most five di
 - [x] Export the filtered tree/candidates, invalid evidence, mapping and QC-gated thumbnails.
 - [x] Add visible attribution, snapshot/count semantics and mapping scope.
 - [x] Verify data contracts, publication guardrails, UI/CSV regression tests and build.
-- [ ] Push the independent repository and verify its production deployment; recheck original inputs unchanged.
+- [x] Push the independent repository and verify its production deployment; recheck original inputs unchanged.
 
 Acceptance: only the two approved image sources; traceable source and thumbnail hashes; no private paths or unexpected public files; identical retained taxonomy placements/risk flags; closed mapping references; no more than five images per source label; explicit distinction between reviewed cohort counts and displayed thumbnails.
 
@@ -25,6 +25,14 @@ Acceptance: only the two approved image sources; traceable source and thumbnail 
 - Original root status still has only the two pre-existing EcoTaxa cache changes; the original demo submodule remains clean on its original branch. No original generator or report-writing QC command was run.
 
 Remaining limit: the connected browser host still reports unavailable (rechecked 2026-11-15). jsdom and HTTP checks are not visual, native-download or cross-browser acceptance. An alternate browser was not installed, in accordance with the owner's earlier instruction. Taxonomy and QC decisions were reused, not rerun as a new scientific review.
+
+### Production verification
+
+- Product commit `17275b644b8371622b8206ba1e1bf25ef607d0bd` was pushed only to `mm1719/PICASSO-Taxonomy-Review/main`. Vercel automatically built production deployment `dpl_C9oDBGKiFx7u1jmeBNTbN1bog8uJ` from that SHA; both Vercel READY and the GitHub Vercel success status were confirmed.
+- The canonical alias [picasso-taxonomy-review.vercel.app](https://picasso-taxonomy-review.vercel.app) resolves to that project/deployment. Anonymous requests to `/`, `/valid`, `/invalid` and `/mapping` return HTTP 200 with the current application shell. This is route/hosting verification, not browser rendering acceptance.
+- All **1,092 public artifacts** (nine JSON/CSV files and 1,083 JPEGs), **6,293,133 bytes**, were downloaded anonymously and matched local SHA-256/size records. JPEG content types are correct. Compiled JavaScript, CSS and the third-party notice also matched the local build.
+- The original Vercel project's before/after details were identical, including its production deployment `dpl_GjNSJoexbqm1omAAMvsSa2n67kHJ`. Original source-input hashes still match. Neither that site's configuration nor research files were written.
+- This verification entry is a documentation-only follow-up; it does not change the verified application or public payload. The repository is returned to synchronized `main` after publication.
 
 ## Historical baseline
 
