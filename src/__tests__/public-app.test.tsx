@@ -20,6 +20,25 @@ beforeEach(() => {
 });
 
 describe("published real-data subset route integration", () => {
+  it("restores the mapping draft after navigating through valid and invalid views", async () => {
+    const user = userEvent.setup();
+    window.history.replaceState(null, "", "/mapping");
+    render(<StrictMode><App /></StrictMode>);
+    await screen.findByRole("heading", { name: "Taxonomy Integration Review" });
+    const loadRequests = vi.mocked(fetch).mock.calls.length;
+    await user.click(screen.getByRole("button", { name: "Edit draft", exact: true }));
+    await user.type(screen.getByLabelText("Mapping search term 1"), "ntc_032");
+    const note = document.querySelector<HTMLTextAreaElement>(".mapping-table textarea")!;
+    await user.clear(note);
+    await user.type(note, "Keep this across routes");
+    await user.click(screen.getByRole("button", { name: "Valid tree", exact: true }));
+    await user.click(screen.getByRole("button", { name: "Invalid labels", exact: true }));
+    await user.click(screen.getByRole("button", { name: "Mapping status", exact: true }));
+    expect(screen.getByRole("heading", { name: "Editable draft" })).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Keep this across routes")).toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(loadRequests);
+  });
+
   it("reports a network failure and recovers when Retry succeeds", async () => {
     const user = userEvent.setup();
     vi.mocked(fetch).mockRejectedValueOnce(new TypeError("Network unavailable"));

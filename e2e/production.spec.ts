@@ -8,13 +8,14 @@ import { parseCsv } from "../src/utils/csv";
 
 // Production checks are read-only; browser contexts and uploaded drafts are disposable.
 const test = base.extend<{ readOnly: void }>({
-  readOnly: [async ({ page }, use) => {
+  readOnly: [async ({ page, context }, use) => {
     const failures: string[] = [];
     page.on("pageerror", (error) => failures.push(error.message));
-    page.on("response", (response) => {
+    context.on("page", (tab) => tab.on("pageerror", (error) => failures.push(error.message)));
+    context.on("response", (response) => {
       if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
     });
-    await page.route("**/*", async (route) => {
+    await context.route("**/*", async (route) => {
       if (!["GET", "HEAD"].includes(route.request().method())) {
         failures.push(`Blocked write: ${route.request().method()} ${route.request().url()}`);
         await route.abort();
@@ -28,6 +29,7 @@ const test = base.extend<{ readOnly: void }>({
 const latest = mapping.histories.find((history) => history.history_id === mapping.latest_history_id)!;
 const rule = latest.rows.find((row) => row.action === "merge")!;
 const fields = mapping.export_fields;
+const draftKey = "picasso-taxonomy-review:mapping-draft";
 
 async function open(page: Page, route: string) {
   const response = await page.goto(route);
@@ -214,6 +216,9 @@ test("failed imports and cancelled history replacement preserve the changed draf
   await page.getByRole("button", { name: "Edit draft", exact: true }).click();
   await expect(row(page).locator("textarea")).toHaveValue(mapping.histories[0].rows.find((item) => item.source_id === rule.source_id)!.notes);
   await screenshot(page, info, "mapping-draft");
+  await page.reload();
+  await expect(row(page).locator("textarea")).toHaveValue(mapping.histories[0].rows.find((item) => item.source_id === rule.source_id)!.notes);
+  await expect(row(page).locator("select")).toHaveValue(mapping.histories[0].rows.find((item) => item.source_id === rule.source_id)!.action);
 });
 
 test("unresolved merge blocks export; self-merge and header-only import normalize to keep", async ({ page }, info) => {
@@ -231,6 +236,124 @@ test("unresolved merge blocks export; self-merge and header-only import normaliz
   await importCsv(page, empty.path);
   await expect(row(page).locator("select")).toHaveValue("keep");
   expect(parseCsv((await exportCsv(page, info, "all-keep-reimported.csv")).text)).toEqual([]);
+});
+
+test("autosaved drafts survive reload, route changes, history navigation and a reopened tab", async ({ page, context }, info) => {
+  await open(page, "/mapping");
+  await page.getByRole("button", { name: "Edit draft", exact: true }).click();
+  await page.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  const note = '  Autosaved, "notes"\n\u4fdd\u7559\u8349\u7a3f  ';
+  await row(page).locator("textarea").fill(note);
+  await expect(page.getByRole("status")).toHaveText("Draft saved in this browser.");
+  const before = await exportCsv(page, info, "before-reload.csv");
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Editable draft", exact: true })).toBeVisible();
+  await expect(row(page).locator("textarea")).toHaveValue(note);
+  for (const label of ["Valid tree", "Invalid labels", "Mapping status"]) {
+    await page.getByRole("button", { name: label, exact: true }).click();
+  }
+  await expect(row(page).locator("textarea")).toHaveValue(note);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/invalid$/);
+  await page.goForward();
+  await expect(row(page).locator("textarea")).toHaveValue(note);
+  expect((await exportCsv(page, info, "after-navigation.csv")).text).toBe(before.text);
+  const reopened = await context.newPage();
+  await page.close();
+  await open(reopened, "/mapping");
+  await expect(row(reopened).locator("textarea")).toHaveValue(note);
+  await reopened.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  await screenshot(reopened, info, "restored-draft");
+});
+
+test("autosave retains incomplete merges and keep notes without relaxing export validation", async ({ page }) => {
+  await open(page, "/mapping");
+  await page.getByRole("button", { name: "Edit draft", exact: true }).click();
+  await page.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  await row(page).locator("select").selectOption("keep");
+  await row(page).locator("textarea").fill("Keep notes are still a draft");
+  await page.reload();
+  await expect(row(page).locator("select")).toHaveValue("keep");
+  await expect(row(page).locator("textarea")).toHaveValue("Keep notes are still a draft");
+  await page.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  await row(page).locator("select").selectOption("merge");
+  await row(page).locator("input[list]").fill("unfinished-target");
+  await page.reload();
+  await expect(row(page).locator("input[list]")).toHaveValue("unfinished-target");
+  await expect(page.getByRole("button", { name: "Export CSV", exact: true })).toBeDisabled();
+});
+
+test("imported drafts persist and rejected imports leave the saved copy unchanged", async ({ page }, info) => {
+  await open(page, "/mapping");
+  const imported = info.outputPath("persist-import.csv");
+  await writeFile(imported, `action,source_id,target_id,notes\ndrop,${rule.source_id},,imported draft\n`);
+  await importCsv(page, imported);
+  await expect(row(page).locator("select")).toHaveValue("drop");
+  const saved = await page.evaluate((key) => localStorage.getItem(key), draftKey);
+  const bad = info.outputPath("rejected-import.csv");
+  await writeFile(bad, "action,source_id,target_id\ndrop,unknown-source,\n");
+  await importCsv(page, bad);
+  await expect(page.getByRole("alert")).toContainText("Import blocked:");
+  expect(await page.evaluate((key) => localStorage.getItem(key), draftKey)).toBe(saved);
+  await page.reload();
+  await expect(row(page).locator("select")).toHaveValue("drop");
+  await expect(row(page).locator("textarea")).toHaveValue("imported draft");
+  const exported = parseCsv((await exportCsv(page, info, "restored-import.csv")).text);
+  expect(exported).toHaveLength(1);
+  expect(exported[0]).toMatchObject({ action: "drop", source_id: rule.source_id, notes: "imported draft" });
+});
+
+test("discard requires confirmation and does not erase unrelated browser storage", async ({ page }) => {
+  await open(page, "/mapping");
+  await page.evaluate(() => localStorage.setItem("unrelated-key", "keep"));
+  await page.getByRole("button", { name: "Edit draft", exact: true }).click();
+  const saved = await page.evaluate((key) => localStorage.getItem(key), draftKey);
+  page.once("dialog", (dialog) => dialog.dismiss());
+  await page.getByRole("button", { name: "Discard draft", exact: true }).click();
+  expect(await page.evaluate((key) => localStorage.getItem(key), draftKey)).toBe(saved);
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Discard draft", exact: true }).click();
+  await expect(page.getByRole("status")).toHaveText("No saved draft.");
+  await page.reload();
+  await expect(page.getByRole("heading", { name: latest.file_name, exact: true })).toBeVisible();
+  expect(await page.evaluate((key) => localStorage.getItem(key), draftKey)).toBeNull();
+  expect(await page.evaluate(() => localStorage.getItem("unrelated-key"))).toBe("keep");
+});
+
+test("incompatible saved drafts are not applied or overwritten and can be backed up", async ({ page }, info) => {
+  await open(page, "/mapping");
+  const damaged = '{"version":99,"notes":"Retain original content"}';
+  await page.evaluate(({ key, raw }) => localStorage.setItem(key, raw), { key: draftKey, raw: damaged });
+  await page.reload();
+  await expect(page.getByRole("alert")).toContainText("incompatible or damaged");
+  const pending = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download saved backup" }).click();
+  const backup = await pending;
+  expect(backup.suggestedFilename()).toBe("picasso_mapping_draft_backup.json");
+  const path = info.outputPath("incompatible-backup.json");
+  await backup.saveAs(path);
+  expect(await readFile(path, "utf8")).toBe(damaged);
+  await page.getByRole("button", { name: "Edit draft", exact: true }).click();
+  expect(await page.evaluate((key) => localStorage.getItem(key), draftKey)).toBe(damaged);
+  await screenshot(page, info, "incompatible-draft");
+});
+
+test("a stale tab pauses autosave when another tab changes the stored draft", async ({ page, context }, info) => {
+  await open(page, "/mapping");
+  await page.getByRole("button", { name: "Edit draft", exact: true }).click();
+  await page.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  const other = await context.newPage();
+  await open(other, "/mapping");
+  await other.getByRole("textbox", { name: "Mapping search term 1", exact: true }).fill(rule.source_id);
+  await row(page).locator("textarea").fill("Latest saved tab");
+  await expect(other.getByRole("alert")).toContainText("changed in another tab");
+  await row(other).locator("textarea").fill("Separate unsaved tab");
+  expect(await other.evaluate(({ key, id }) => JSON.parse(localStorage.getItem(key)!).rows.find((item: {source_id: string}) => item.source_id === id).notes, { key: draftKey, id: rule.source_id })).toBe("Latest saved tab");
+  expect(parseCsv((await exportCsv(other, info, "conflicting-tab.csv")).text).find((item) => item.source_id === rule.source_id)?.notes).toBe("Separate unsaved tab");
+  await screenshot(other, info, "tab-conflict");
+  other.once("dialog", (dialog) => dialog.accept());
+  await other.reload();
+  await expect(row(other).locator("textarea")).toHaveValue("Latest saved tab");
 });
 
 test("every published artifact matches its hash and every thumbnail decodes in Chromium", async ({ page }, info) => {

@@ -1,6 +1,7 @@
-import { Download, FileUp, History, Search, X } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
-import type { MappingHistory, MappingRuleRow, MappingStatusData, MappingTarget } from "../types";
+import { Download, FileUp, History, RotateCcw, Search, Trash2, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { MappingRuleRow, MappingStatusData, MappingTarget } from "../types";
+import { useMappingDraft } from "../hooks/useMappingDraft";
 import { parseCsv } from "../utils/csv";
 
 type Props = {
@@ -44,6 +45,15 @@ function csvCell(value: string) {
   return value;
 }
 
+function downloadText(text: string, filename: string, type: string) {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
+}
+
 function aliasSort(value: string) {
   return value
     .split("")
@@ -59,16 +69,27 @@ export function MappingStatusReview({ data }: Props) {
   const fallbackLatestHistory = data.histories.length > 0 ? data.histories[data.histories.length - 1] : null;
   const latestHistory = data.histories.find((history) => history.history_id === data.latest_history_id)
     ?? fallbackLatestHistory;
-  const [mode, setMode] = useState<Mode>("view");
+  const localDraft = useMappingDraft(data.targets);
+  const [mode, setMode] = useState<Mode>(localDraft.initialRows ? "edit" : "view");
   const [historyId, setHistoryId] = useState(latestHistory?.history_id ?? "");
   const [draftRows, setDraftRows] = useState<MappingRuleRow[]>(() =>
-    data.targets.map((target) => blankRule(target))
+    localDraft.initialRows?.map(validateRow) ?? data.targets.map((target) => blankRule(target))
   );
-  const [draftChanged, setDraftChanged] = useState(false);
+  const [draftChanged, setDraftChanged] = useState(!!localDraft.initialRows);
   const [importError, setImportError] = useState("");
   const [queries, setQueries] = useState(["", "", ""]);
   const [selectedSourceId, setSelectedSourceId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (!localDraft.error || !draftChanged) return;
+    function protectUnsaved(event: BeforeUnloadEvent) {
+      event.preventDefault();
+      event.returnValue = "";
+    }
+    window.addEventListener("beforeunload", protectUnsaved);
+    return () => window.removeEventListener("beforeunload", protectUnsaved);
+  }, [localDraft.error, draftChanged]);
 
   const activeHistory = data.histories.find((history) => history.history_id === historyId)
     ?? latestHistory;
@@ -156,7 +177,9 @@ export function MappingStatusReview({ data }: Props) {
       setMode("edit");
       return;
     }
-    setDraftRows(viewRows.map((row) => ({ ...row })));
+    const next = viewRows.map((row) => ({ ...row }));
+    setDraftRows(next);
+    localDraft.save(next);
     setDraftChanged(false);
     setImportError("");
     setMode("edit");
@@ -164,11 +187,11 @@ export function MappingStatusReview({ data }: Props) {
 
   function updateDraft(sourceId: string, patch: Partial<MappingRuleRow>) {
     setDraftChanged(true);
-    setDraftRows((current) =>
-      current.map((row) => (
-        row.source_id === sourceId ? validateRow({ ...row, ...patch }) : row
-      ))
-    );
+    const next = draftRows.map((row) => (
+      row.source_id === sourceId ? validateRow({ ...row, ...patch }) : row
+    ));
+    setDraftRows(next);
+    localDraft.save(next);
   }
 
   function updateQuery(index: number, value: string) {
@@ -213,7 +236,9 @@ export function MappingStatusReview({ data }: Props) {
       if (missingSources.size > 0) {
         throw new Error(`source_id not found (${Array.from(missingSources).join(", ")})`);
       }
-      setDraftRows(Array.from(next.values()));
+      const imported = Array.from(next.values());
+      setDraftRows(imported);
+      localDraft.save(imported);
       setDraftChanged(true);
       setImportError("");
       setMode("edit");
@@ -230,13 +255,17 @@ export function MappingStatusReview({ data }: Props) {
         EXPORT_FIELDS.map((field) => csvCell(String(row[field as keyof MappingRuleRow] ?? ""))).join(",")
       )
     ].join("\n") + "\n";
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `manual_mapping_rules_${new Date().toISOString().slice(0, 10)}.csv`;
-    anchor.click();
-    URL.revokeObjectURL(url);
+    downloadText(csv, `manual_mapping_rules_${new Date().toISOString().slice(0, 10)}.csv`, "text/csv;charset=utf-8");
+  }
+
+  function discardDraft() {
+    if (!window.confirm("Discard this draft and its saved browser copy? Export or download a backup first to keep your work.")) return;
+    if (!localDraft.discard()) return;
+    setDraftRows(data.targets.map(blankRule));
+    setDraftChanged(false);
+    setImportError("");
+    setSelectedSourceId(null);
+    setMode("view");
   }
 
   return (
@@ -252,6 +281,28 @@ export function MappingStatusReview({ data }: Props) {
               Edit draft
             </button>
           </div>
+        </section>
+
+        <section>
+          <h2>Local draft</h2>
+          {localDraft.error ? (
+            <p role="alert" className="error-text">{localDraft.error}</p>
+          ) : (
+            <p role="status" className="muted">{localDraft.hasSavedDraft ? "Draft saved in this browser." : "No saved draft."}</p>
+          )}
+          {localDraft.error && !localDraft.blocked && mode === "edit" && (
+            <button className="ghost-button full-button" onClick={() => localDraft.save(draftRows)}>
+              <RotateCcw size={16} /> Retry autosave
+            </button>
+          )}
+          {localDraft.error && localDraft.savedText !== null && (
+            <button className="ghost-button full-button" onClick={() => downloadText(localDraft.savedText!, "picasso_mapping_draft_backup.json", "application/json")}>
+              <Download size={16} /> Download saved backup
+            </button>
+          )}
+          <button className="ghost-button full-button" disabled={!localDraft.hasSavedDraft && !draftChanged && !localDraft.blocked && mode !== "edit"} onClick={discardDraft}>
+            <Trash2 size={16} /> Discard draft
+          </button>
         </section>
 
         <section>

@@ -1,5 +1,21 @@
 # Validation record
 
+## Mapping Draft Autosave (2026-11-15)
+
+Owner-approved scope: persist mapping drafts only in the independent PICASSO browser origin, with tests and direct push/deployment. Baseline `d4709af645793fa276353acdfbd8ab0dc7d6b401`. No original Phase 3 repository, website or research input is writable for this task. The historical memory-only limitation below is superseded by this change.
+
+Contract: one versioned `picasso-taxonomy-review:mapping-draft` localStorage record; synchronous save in successful edit/import/history-replacement handlers; full keep/merge/drop rows including notes and unfinished targets; restore edit mode after remount/reload; rebuild aliases and validation from current targets. Target IDs, aliases, dataset IDs and source labels form a sorted compatibility signature. Count-only updates and history viewing do not invalidate or replace a draft. A changed identity/schema, incomplete row set, duplicate/unknown source or malformed field blocks restore and preserves the original stored text.
+
+Storage errors remain visible instead of reporting success. A saved backup can be downloaded unchanged; discard requires confirmation and removes only the app key. Quota/permission failures permit in-memory editing and retry; an unload warning protects changed drafts while saving is unavailable. Failed imports leave both memory and storage untouched. Cross-tab storage events and pre-write checks pause stale tabs; these are optimistic guards, not atomic multi-writer locking. Use one editing tab and export before navigating away when an autosave error is shown. There is no cloud sync, new dependency, public-data change or taxonomy/mapping-policy change.
+
+### Local Verification
+
+- The remount regression failed on the memory-only baseline, then passed after autosave was implemented. `npm run coverage`: **111 tests passed in 11 files** (28 added). Overall statements **94.68%** (820/866), branches **83.10%** (713/858), functions **94.34%** (317/336), lines **95.03%** (708/745). The new storage hook has **100%** statement, branch, function and line coverage; this is frontend coverage, not a Phase 3 pipeline claim.
+- Cases include StrictMode, no write on initial viewing, complete draft restoration, revalidation of incomplete merges, keep notes, target identity compatibility, 12 damaged-schema cases, denied reads, quota/retry, failed removal, revoked access, cross-tab notifications and pre-write conflict detection. App-level tests cover real-snapshot route navigation; rejected imports leave stored bytes unchanged.
+- Chromium desktop/mobile acceptance: **33 passed / 1 intentionally skipped** (duplicate full-asset sweep on mobile). Six added workflows run at both viewport sizes: reload/route/back-forward/reopened-tab recovery, incomplete merge/keep notes, CSV import persistence, confirmed discard, incompatible-backup download and stale-tab conflict. Confirmed history replacement also survives reload. Existing thumbnails, credits, CSV semantics and all public asset checks remain green.
+- `npm run test:fixtures`: **15 passed**. `npm run build`: publication guard, TypeScript/Vite and **2 notice tests passed**. `npm audit --json`: **0 vulnerabilities**; dependency files are unchanged. `git diff --check`: passed.
+- Browser evidence: `/tmp/picasso-autosave-local-20261115/`, using Node 24.22.3, Playwright 1.65.1 and Chromium 159.0.8154.6. Desktop/mobile status and conflict screenshots were inspected. No regular browser profile or original research output was used.
+
 ## Browser acceptance and fixes (2026-11-15)
 
 The owner explicitly approved isolated Playwright/Chromium after the connected browser remained unavailable. Only this independent repository is writable for this task. Production baseline: `994b573c40e6d8f86e0f7d0f77919c3aac0f297e`, deployment `dpl_DP7d1deGtLxj9rCMUFMQgfW8sURQ` at the PICASSO canonical domain. Earlier browser-unavailable notes below remain historical checkpoints, superseded by this acceptance run.

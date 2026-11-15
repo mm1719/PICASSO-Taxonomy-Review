@@ -14,7 +14,13 @@ This React/TypeScript application demonstrates how heterogeneous labels can be i
 
 The browser export does **not** update a server, an original dataset, or a training manifest. Decisions remain a local draft until exported and deliberately integrated by a separate pipeline.
 
-Drafts live in memory, not browser storage. Repeated clicks on the active edit mode do not reset a draft. Returning from history to edit asks before replacing a changed draft; cancel resumes that draft. Export before reloading or leaving the mapping section.
+Mapping drafts autosave to browser `localStorage` after each edit, successful CSV import or confirmed history replacement. Refreshing, returning from another review section, or reopening the site restores the complete draft in edit mode, including keep-row notes and unfinished merges. CSV export still contains only merge/drop rules and blocks unresolved targets. Merely viewing history or rejecting an import does not replace the saved draft; cancelling history replacement resumes it.
+
+The **Local draft** status reports successful saving or an error. **Discard draft** requires confirmation and removes only this app's draft key, not other browser data. Unsupported/damaged storage or changed target identities are never applied or automatically overwritten; **Download saved backup** preserves the original stored text for recovery. Storage denial or quota errors leave edits in memory, with **Retry autosave** and an unload warning; export before navigating away when an error is shown.
+
+Use one editing tab at a time. A storage-change listener and a pre-write comparison pause stale tabs, but this is optimistic conflict detection, not atomic locking or collaborative merging. Export the stale tab's work before reloading. The [Web Storage specification](https://html.spec.whatwg.org/multipage/webstorage.html#introduction-15) does not guarantee cross-window locking.
+
+Drafts belong to the same browser profile and site origin, not your account: the canonical site, preview aliases, localhost, and the original Phase 3 site have separate storage. There is no server upload or cross-device sync. Clearing site data removes the draft, and private-browsing storage is temporary; keep CSV backups for important decisions. See [browser storage behavior](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
 
 ## Public demo
 
@@ -47,7 +53,7 @@ npx playwright install chromium --only-shell
 npm run test:browser
 ```
 
-This uses disposable Chromium contexts, not your regular browser profile. The default target is the independent public PICASSO site; network requests are restricted to GET/HEAD. Tests exercise real downloads/uploads, mapping round trips, rejected-import and history-replacement protection, credits, thumbnails, desktop/mobile layouts and every published asset's hash. The full thumbnail set is decoded once on desktop; mobile repeats the interactive workflows.
+This uses disposable Chromium contexts, not your regular browser profile. The default target is the independent public PICASSO site; network requests are restricted to GET/HEAD. Tests exercise real downloads/uploads, mapping round trips, autosave/reload/navigation/tab recovery, saved-copy protection, conflict detection, credits, thumbnails, desktop/mobile layouts and every published asset's hash. The full thumbnail set is decoded once on desktop; mobile repeats the interactive workflows.
 
 To test an already running local build preview, set `PICASSO_BASE_URL=http://127.0.0.1:4173`. The configuration refuses other non-loopback hosts, including the original Phase 3 site. Screenshots, CSVs and failure traces go to ignored `test-results/` (override with `PICASSO_TEST_OUTPUT`); the HTML report is in ignored `playwright-report/`. These checks do not persist mapping decisions or run the research pipeline. Mobile emulation is not physical-device or Safari/Firefox verification.
 
@@ -82,7 +88,7 @@ Checked-in JSON / CSV / JPEG + attribution
           v
 React review interface
    | tree and evidence inspection
-   | local mapping draft
+   | local mapping draft <-> browser localStorage
    v
 Browser CSV download
 (no server writeback)

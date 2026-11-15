@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { MappingHistory, MappingStatusData } from "../../types";
 import { MappingStatusReview } from "../MappingStatusReview";
+import { MAPPING_DRAFT_KEY } from "../../hooks/useMappingDraft";
 
 const targets = [
   {
@@ -146,6 +147,25 @@ beforeEach(() => {
 });
 
 describe("MappingStatusReview", () => {
+  it("restores complete drafts, including keep notes and unresolved merges, after remount", async () => {
+    const user = userEvent.setup();
+    const data = mappingData([firstHistory], "first");
+    const first = render(<MappingStatusReview data={data} />);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    let panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    fireEvent.change(rowByAlias(panel, "Alpha").querySelector("input[list]")!, { target: { value: "unfinished-id" } });
+    fireEvent.change(rowByAlias(panel, "beta").querySelector("textarea")!, { target: { value: '  keep, "notes"\n\u8349\u7a3f  ' } });
+    first.unmount();
+
+    render(<MappingStatusReview data={data} />);
+    panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    expect(rowByAlias(panel, "Alpha").querySelector("input[list]")).toHaveValue("unfinished-id");
+    expect(rowByAlias(panel, "beta").querySelector("textarea")).toHaveValue('  keep, "notes"\n\u8349\u7a3f  ');
+    expect(rowByAlias(panel, "beta").querySelector("select")).toHaveValue("keep");
+    expect(screen.getByRole("button", { name: "Export CSV" })).toBeDisabled();
+    expect(screen.getByRole("status")).toHaveTextContent("saved in this browser");
+  });
+
   it("falls back to blank rows when no history exists and closes its drawer", async () => {
     const user = userEvent.setup();
     render(<MappingStatusReview data={mappingData([], "")} />);
@@ -161,6 +181,53 @@ describe("MappingStatusReview", () => {
 
     await user.click(screen.getByRole("button", { name: "Close class detail drawer" }));
     expect(screen.queryByRole("heading", { name: "Alpha" })).not.toBeInTheDocument();
+  });
+
+  it("downloads an incompatible backup and only discards it after confirmation", async () => {
+    const user = userEvent.setup();
+    const raw = "{broken, original content";
+    window.localStorage.setItem(MAPPING_DRAFT_KEY, raw);
+    window.localStorage.setItem("unrelated-key", "keep");
+    let exported: Blob;
+    Object.defineProperty(URL, "createObjectURL", { configurable: true, value: vi.fn((blob: Blob) => { exported = blob; return "blob:backup"; }) });
+    Object.defineProperty(URL, "revokeObjectURL", { configurable: true, value: vi.fn() });
+    vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => undefined);
+    render(<MappingStatusReview data={mappingData()} />);
+    expect(screen.getByRole("alert")).toHaveTextContent("incompatible or damaged");
+    await user.click(screen.getByRole("button", { name: "Download saved backup" }));
+    expect(await blobText(exported!)).toBe(raw);
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    await user.click(screen.getByRole("button", { name: "Discard draft" }));
+    expect(window.localStorage.getItem(MAPPING_DRAFT_KEY)).toBe(raw);
+    confirm.mockReturnValue(true);
+    await user.click(screen.getByRole("button", { name: "Discard draft" }));
+    expect(window.localStorage.getItem(MAPPING_DRAFT_KEY)).toBeNull();
+    expect(window.localStorage.getItem("unrelated-key")).toBe("keep");
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    expect(screen.getByRole("status")).toHaveTextContent("saved in this browser");
+  });
+
+  it("warns on autosave failure, retains edits, and removes the unload guard after retry", async () => {
+    const user = userEvent.setup();
+    const write = vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new DOMException("Full", "QuotaExceededError"); });
+    render(<MappingStatusReview data={mappingData([firstHistory], "first")} />);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    const note = rowByAlias(panel, "Alpha").querySelector("textarea")!;
+    fireEvent.change(note, { target: { value: "Not yet saved" } });
+    expect(screen.getByRole("alert")).toHaveTextContent("Autosave unavailable");
+    expect(note).toHaveValue("Not yet saved");
+    const blocked = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(blocked);
+    expect(blocked.defaultPrevented).toBe(true);
+    write.mockRestore();
+    await user.click(screen.getByRole("button", { name: "Retry autosave" }));
+    expect(window.localStorage.getItem(MAPPING_DRAFT_KEY)).toContain("Not yet saved");
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    const allowed = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(allowed);
+    expect(allowed.defaultPrevented).toBe(false);
   });
 
   it("switches history and validates drop, unresolved, self, and valid merge edits", async () => {
@@ -288,11 +355,13 @@ describe("MappingStatusReview", () => {
     const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
     const row = rowByAlias(panel, "Alpha");
     fireEvent.change(within(row).getByRole("textbox"), { target: { value: "Unexported note" } });
+    const saved = window.localStorage.getItem(MAPPING_DRAFT_KEY);
     await user.upload(fileInput(), csvFile(text, "invalid.csv"));
     expect(await screen.findByText(/^Import blocked:/)).toBeInTheDocument();
     expect(within(row).getByRole("textbox")).toHaveValue("Unexported note");
     expect(row.querySelector("select")).toHaveValue("merge");
     expect(screen.getByRole("button", { name: "Export CSV" })).toBeEnabled();
+    expect(window.localStorage.getItem(MAPPING_DRAFT_KEY)).toBe(saved);
   });
 
   it("reports a file read failure without entering edit mode", async () => {
