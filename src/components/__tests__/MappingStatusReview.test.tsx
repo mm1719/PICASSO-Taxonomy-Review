@@ -212,7 +212,7 @@ describe("MappingStatusReview", () => {
     await user.upload(
       fileInput(),
       csvFile(
-        "action,source_id,target_id,notes\nMERGE,a,b, imported note \nwat,b,,ignored action\ndrop,c,b,drop note\nkeep,,,empty source\n",
+        "action,source_id,target_id,notes\nMERGE,a,b, imported note \nKEEP,b,,kept source\ndrop,c,b,drop note\n",
         "good.csv",
       )
     );
@@ -228,7 +228,81 @@ describe("MappingStatusReview", () => {
     expect(within(dropRow).queryByDisplayValue("b")).not.toBeInTheDocument();
   });
 
-  it("exports only explicit rows with CSV escaping", async () => {
+  it("does not reset edits when Edit draft is clicked again", async () => {
+    const user = userEvent.setup();
+    render(<MappingStatusReview data={mappingData([firstHistory], "first")} />);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    const row = rowByAlias(panel, "Alpha");
+    fireEvent.change(within(row).getByRole("textbox"), { target: { value: "Unexported note" } });
+    await user.selectOptions(row.querySelector("select")!, "drop");
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    expect(within(row).getByRole("textbox")).toHaveValue("Unexported note");
+    expect(row.querySelector("select")).toHaveValue("drop");
+  });
+
+  it("requires confirmation before replacing a changed draft from history", async () => {
+    const user = userEvent.setup();
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    render(<MappingStatusReview data={mappingData([firstHistory], "first")} />);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    const row = rowByAlias(panel, "Alpha");
+    fireEvent.change(within(row).getByRole("textbox"), { target: { value: "Unexported note" } });
+    await user.click(screen.getByRole("button", { name: "View latest/history" }));
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    expect(confirm).toHaveBeenCalledOnce();
+    expect(screen.getByRole("heading", { name: "Editable draft" })).toBeInTheDocument();
+    expect(within(rowByAlias(panel, "Alpha")).getByRole("textbox")).toHaveValue("Unexported note");
+    await user.click(screen.getByRole("button", { name: "View latest/history" }));
+    confirm.mockReturnValue(true);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    expect(within(rowByAlias(panel, "Alpha")).getByRole("textbox")).toHaveValue('merge, "review"');
+  });
+
+  it.each([
+    "action,source,target\nmerge,a,b\n",
+    "source_id,target_id\na,b\n",
+    "",
+    "action,source_id,target_id\nkeep,,\n",
+    "action,source_id,target_id\nwat,a,b\n",
+    "action,source_id,target_id\nmerge,a,b\ndrop,a,\n",
+    'action,source_id,target_id,notes\nmerge,a,b,"unfinished',
+    "action,source_id,target_id\ndrop,missing,\n"
+  ])("preserves the draft when an invalid CSV is imported: %s", async (text) => {
+    const user = userEvent.setup();
+    render(<MappingStatusReview data={mappingData([firstHistory], "first")} />);
+    await user.click(screen.getByRole("button", { name: "Edit draft" }));
+    const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    const row = rowByAlias(panel, "Alpha");
+    fireEvent.change(within(row).getByRole("textbox"), { target: { value: "Unexported note" } });
+    await user.upload(fileInput(), csvFile(text, "invalid.csv"));
+    expect(await screen.findByText(/^Import blocked:/)).toBeInTheDocument();
+    expect(within(row).getByRole("textbox")).toHaveValue("Unexported note");
+    expect(row.querySelector("select")).toHaveValue("merge");
+    expect(screen.getByRole("button", { name: "Export CSV" })).toBeEnabled();
+  });
+
+  it("reports a file read failure without entering edit mode", async () => {
+    const user = userEvent.setup();
+    render(<MappingStatusReview data={mappingData()} />);
+    const file = new File([], "unreadable.csv", { type: "text/csv" });
+    Object.defineProperty(file, "text", { value: async () => { throw new Error("Read failed"); } });
+    await user.upload(fileInput(), file);
+    expect(await screen.findByText("Import blocked: Read failed")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "second.csv" })).toBeInTheDocument();
+  });
+
+  it("accepts a header-only export as an all-keep draft", async () => {
+    const user = userEvent.setup();
+    render(<MappingStatusReview data={mappingData()} />);
+    await user.upload(fileInput(), csvFile("action,source_id,target_id,source_alias,target_alias,notes\n", "empty-rules.csv"));
+    const panel = (await screen.findByRole("heading", { name: "Editable draft" })).closest("main")!;
+    for (const select of within(panel).getAllByRole("combobox")) expect(select).toHaveValue("keep");
+    expect(screen.getByRole("button", { name: "Export CSV" })).toBeEnabled();
+  });
+
+  it("exports only explicit rows with CSV escaping and imports them unchanged", async () => {
     const user = userEvent.setup();
     let exported: Blob | undefined;
     const createObjectURL = vi.fn((blob: Blob) => {
@@ -249,5 +323,11 @@ describe("MappingStatusReview", () => {
       'merge,a,b,Alpha,beta,"merge, ""review"""\n'
     );
     expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:mapping");
+    await user.upload(fileInput(), csvFile(await blobText(exported!), "roundtrip.csv"));
+    const panel = screen.getByRole("heading", { name: "Editable draft" }).closest("main")!;
+    const row = rowByAlias(panel, "Alpha");
+    expect(row.querySelector("select")).toHaveValue("merge");
+    expect(row.querySelector("input[list]")).toHaveValue("b");
+    expect(within(row).getByRole("textbox")).toHaveValue('merge, "review"');
   });
 });

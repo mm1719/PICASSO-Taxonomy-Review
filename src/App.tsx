@@ -31,6 +31,8 @@ function currentRoute(): Route {
 
 function App() {
   const [data, setData] = useState<DataState | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [route, setRoute] = useState<Route>(currentRoute());
   const [queries, setQueries] = useState(["", "", ""]);
   const [datasets, setDatasets] = useState<Set<DatasetId>>(new Set(DATASETS));
@@ -46,25 +48,42 @@ function App() {
   const [invalidSampleKey, setInvalidSampleKey] = useState<string | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
     async function load() {
-      const [treeRes, candidatesRes, samplesRes, invalidRes, mappingRes] = await Promise.all([
-        fetch("/data/taxonomy_tree.json"),
-        fetch("/data/valid_class_candidates.csv"),
-        fetch("/data/class_image_samples.json"),
-        fetch("/data/invalid_label_groups.json"),
-        fetch("/data/mapping_status.json")
-      ]);
-      const tree = (await treeRes.json()) as TreeNode;
-      setData({
-        tree: normalizeTree(tree),
-        candidates: parseCsv<Candidate>(await candidatesRes.text()),
-        samples: await samplesRes.json(),
-        invalid: await invalidRes.json(),
-        mapping: await mappingRes.json()
-      });
+      try {
+        const paths = [
+          "/data/taxonomy_tree.json",
+          "/data/valid_class_candidates.csv",
+          "/data/class_image_samples.json",
+          "/data/invalid_label_groups.json",
+          "/data/mapping_status.json"
+        ];
+        const [treeRes, candidatesRes, samplesRes, invalidRes, mappingRes] = await Promise.all(
+          paths.map(async (path) => {
+            const response = await fetch(path, { signal: controller.signal });
+            if (!response.ok) throw new Error(`Could not load ${path} (HTTP ${response.status})`);
+            return response;
+          })
+        );
+        const tree = (await treeRes.json()) as TreeNode;
+        const loaded = {
+          tree: normalizeTree(tree),
+          candidates: parseCsv<Candidate>(await candidatesRes.text()),
+          samples: await samplesRes.json(),
+          invalid: await invalidRes.json(),
+          mapping: await mappingRes.json()
+        };
+        if (!controller.signal.aborted) setData(loaded);
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          setLoadError(error instanceof Error ? error.message : "The data request failed.");
+          controller.abort();
+        }
+      }
     }
     void load();
-  }, []);
+    return () => controller.abort();
+  }, [loadAttempt]);
 
   useEffect(() => {
     function handlePopState() {
@@ -132,8 +151,20 @@ function App() {
       .filter((group) => group.aliases.some((alias) => labelKeys.has(alias.toLocaleLowerCase())));
   }, [data, selectedCandidate]);
 
+  if (loadError) {
+    return (
+      <main className="error-screen" role="alert">
+        <h1>Unable to load taxonomy data</h1>
+        <p>{loadError}</p>
+        <button className="primary-button" onClick={() => {
+          setLoadError(null);
+          setLoadAttempt((attempt) => attempt + 1);
+        }}>Retry</button>
+      </main>
+    );
+  }
   if (!data) {
-    return <div className="loading">Loading taxonomy data...</div>;
+    return <div className="loading" role="status">Loading taxonomy data...</div>;
   }
 
   const sampleCandidateKey = sampleEntry?.split("::aphia::")[0] ?? "";

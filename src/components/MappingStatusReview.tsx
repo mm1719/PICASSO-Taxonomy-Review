@@ -64,6 +64,7 @@ export function MappingStatusReview({ data }: Props) {
   const [draftRows, setDraftRows] = useState<MappingRuleRow[]>(() =>
     data.targets.map((target) => blankRule(target))
   );
+  const [draftChanged, setDraftChanged] = useState(false);
   const [importError, setImportError] = useState("");
   const [queries, setQueries] = useState(["", "", ""]);
   const [selectedSourceId, setSelectedSourceId] = useState<string | null>(null);
@@ -148,12 +149,21 @@ export function MappingStatusReview({ data }: Props) {
   }
 
   function startEditFromCurrent() {
+    if (mode === "edit") return;
+    if (draftChanged && !window.confirm(
+      "Replace the changed draft with the selected history? Export first to keep a copy. Cancel to resume the current draft."
+    )) {
+      setMode("edit");
+      return;
+    }
     setDraftRows(viewRows.map((row) => ({ ...row })));
+    setDraftChanged(false);
     setImportError("");
     setMode("edit");
   }
 
   function updateDraft(sourceId: string, patch: Partial<MappingRuleRow>) {
+    setDraftChanged(true);
     setDraftRows((current) =>
       current.map((row) => (
         row.source_id === sourceId ? validateRow({ ...row, ...patch }) : row
@@ -166,38 +176,50 @@ export function MappingStatusReview({ data }: Props) {
   }
 
   async function importCsv(file: File) {
-    const text = await file.text();
-    const rawRows = parseCsv<ImportedRule>(text);
-    const next = new Map(data.targets.map((target) => [target.source_id, blankRule(target)]));
-    const missingSources = new Set<string>();
-    rawRows.forEach((raw) => {
-      const sourceId = raw.source_id?.trim() ?? "";
-      if (!targetsById.has(sourceId)) {
-        if (sourceId) missingSources.add(sourceId);
-        return;
+    try {
+      const text = await file.text();
+      const rawRows = parseCsv<ImportedRule>(text, ["action", "source_id", "target_id"]);
+      const next = new Map(data.targets.map((target) => [target.source_id, blankRule(target)]));
+      const missingSources = new Set<string>();
+      const seenSources = new Set<string>();
+      for (const [index, raw] of rawRows.entries()) {
+        const sourceId = raw.source_id?.trim() ?? "";
+        const action = raw.action?.trim().toLowerCase() ?? "";
+        if (!sourceId) throw new Error(`Missing source_id in CSV row ${index + 2}`);
+        if (!["keep", "merge", "drop"].includes(action)) {
+          throw new Error(`Invalid action in CSV row ${index + 2}`);
+        }
+        if (seenSources.has(sourceId)) throw new Error(`Duplicate source_id: ${sourceId}`);
+        seenSources.add(sourceId);
+        const source = targetsById.get(sourceId);
+        if (!source) {
+          missingSources.add(sourceId);
+          continue;
+        }
+        next.set(
+          sourceId,
+          validateRow({
+            action: normalizeAction(action),
+            source_id: sourceId,
+            target_id: raw.target_id?.trim() ?? "",
+            source_alias: source.source_alias,
+            target_alias: "",
+            notes: raw.notes?.trim() ?? "",
+            validation_status: "ok",
+            validation_message: ""
+          })
+        );
       }
-      const source = targetsById.get(sourceId)!;
-      next.set(
-        sourceId,
-        validateRow({
-          action: normalizeAction(raw.action ?? "keep"),
-          source_id: sourceId,
-          target_id: raw.target_id?.trim() ?? "",
-          source_alias: source.source_alias,
-          target_alias: "",
-          notes: raw.notes?.trim() ?? "",
-          validation_status: "ok",
-          validation_message: ""
-        })
-      );
-    });
-    if (missingSources.size > 0) {
-      setImportError(`Import blocked: source_id not found (${Array.from(missingSources).join(", ")})`);
-      return;
+      if (missingSources.size > 0) {
+        throw new Error(`source_id not found (${Array.from(missingSources).join(", ")})`);
+      }
+      setDraftRows(Array.from(next.values()));
+      setDraftChanged(true);
+      setImportError("");
+      setMode("edit");
+    } catch (error) {
+      setImportError(`Import blocked: ${error instanceof Error ? error.message : "Unable to read CSV"}`);
     }
-    setDraftRows(Array.from(next.values()));
-    setImportError("");
-    setMode("edit");
   }
 
   function exportCsv() {
@@ -226,7 +248,7 @@ export function MappingStatusReview({ data }: Props) {
             <button className={mode === "view" ? "active" : ""} onClick={() => setMode("view")}>
               View latest/history
             </button>
-            <button className={mode === "edit" ? "active" : ""} onClick={startEditFromCurrent}>
+            <button className={mode === "edit" ? "active" : ""} disabled={mode === "edit"} onClick={startEditFromCurrent}>
               Edit draft
             </button>
           </div>
@@ -294,7 +316,7 @@ export function MappingStatusReview({ data }: Props) {
             Export CSV
           </button>
           <p className="muted">CSV preserves entered text. Inspect untrusted values as plain text before opening in a spreadsheet; formula-like values are not sanitized.</p>
-          {importError && <p className="error-text">{importError}</p>}
+          {importError && <p role="alert" className="error-text">{importError}</p>}
           {mergeErrors.length > 0 && (
             <p className="error-text">
               {mergeErrors.length} merge row(s) have unresolved target_id values.

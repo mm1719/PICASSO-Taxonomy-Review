@@ -1,4 +1,7 @@
-export function parseCsv<T extends Record<string, string>>(text: string): T[] {
+export function parseCsv<T extends Record<string, string>>(
+  text: string,
+  requiredHeaders: readonly string[] = []
+): T[] {
   const rows: string[][] = [];
   let row: string[] = [];
   let field = "";
@@ -25,12 +28,20 @@ export function parseCsv<T extends Record<string, string>>(text: string): T[] {
       field += char;
     }
   }
+  if (inQuotes) throw new Error("Unclosed quoted CSV field");
   if (field || row.length) {
     row.push(field);
     rows.push(row);
   }
 
-  const [headers, ...body] = rows;
+  const [headers = [], ...body] = rows;
+  const missingHeaders = requiredHeaders.filter((header) => !headers.includes(header));
+  if (missingHeaders.length > 0) {
+    throw new Error(`Missing CSV columns: ${missingHeaders.join(", ")}`);
+  }
+  if (requiredHeaders.length > 0 && new Set(headers).size !== headers.length) {
+    throw new Error("Duplicate CSV columns");
+  }
   return body.map((values) => {
     const item: Record<string, string> = {};
     headers.forEach((header, index) => {

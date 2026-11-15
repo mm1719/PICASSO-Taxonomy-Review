@@ -19,6 +19,20 @@ describe("parseCsv", () => {
 
     expect(rows).toEqual([{ a: "1", b: "2", c: "" }]);
   });
+
+  it.each([
+    ["", "Missing CSV columns"],
+    ["action,source,target\nmerge,a,b\n", "Missing CSV columns"],
+    ["action,source_id,target_id,source_id\nmerge,a,b,c\n", "Duplicate CSV columns"],
+    ['action,source_id,target_id,notes\nmerge,a,b,"unfinished', "Unclosed quoted CSV field"]
+  ])("rejects malformed mapping CSV: %s", (text, message) => {
+    expect(() => parseCsv(text, ["action", "source_id", "target_id"])).toThrow(message);
+  });
+
+  it("accepts a header-only export with no explicit rules", () => {
+    expect(parseCsv("action,source_id,target_id,notes\n", ["action", "source_id", "target_id"]))
+      .toEqual([]);
+  });
 });
 
 describe("splitCell", () => {

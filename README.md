@@ -14,6 +14,8 @@ This React/TypeScript application demonstrates how heterogeneous labels can be i
 
 The browser export does **not** update a server, an original dataset, or a training manifest. Decisions remain a local draft until exported and deliberately integrated by a separate pipeline.
 
+Drafts live in memory, not browser storage. Repeated clicks on the active edit mode do not reset a draft. Returning from history to edit asks before replacing a changed draft; cancel resumes that draft. Export before reloading or leaving the mapping section.
+
 ## Run locally
 
 Use the Node version in `.nvmrc` (20.20.2) or a compatible version satisfying `package.json`, plus Python 3 for fixture generation and build-time asset checks.
@@ -28,6 +30,8 @@ npm run dev
 ```
 
 The development server binds **127.0.0.1**. It serves only static application assets and local synthetic fixtures. There is no backend, authentication, external data API, credential, or model dependency. Build artifacts and installed dependencies are excluded from the source archive.
+
+Builds generate `dist/THIRD_PARTY_LICENSES.md` from the installed bundled dependencies. JavaScript chunks reference that file, and build-time tests verify the required package versions and complete license texts. Deploy the complete `dist/` directory, including the notices; these notices do not license this project's own code.
 
 ## Synthetic fixture design
 
@@ -63,5 +67,9 @@ See [validation](docs/VALIDATION.md), [provenance and release boundaries](docs/P
 This candidate is not the complete original data-integration workflow, a scientific benchmark or a reproduction of all taxonomy decisions. Existing provider names in source compatibility constants and legacy unit tests do not mean their datasets are included or licensed here.
 
 CSV imports are local files but still untrusted input. The exporter preserves cell text and is not a spreadsheet-formula sanitizer. Inspect unfamiliar CSVs as text or import with spreadsheet formula interpretation disabled. Do not upload private data to a deployed copy without separately reviewing its data-handling needs.
+
+Mapping imports require `action`, `source_id`, and `target_id` columns; aliases and notes are optional. Missing or duplicate columns, unclosed quoted fields, missing/unknown/duplicate source IDs, unsupported actions, and file read failures block the import without changing the current draft. Actions accept `keep`, `merge`, or `drop` case-insensitively. A correctly headed CSV with no data rows represents an all-keep draft, matching an export with no explicit rules. Unresolved merge targets remain visible errors and block export.
+
+Failed HTTP requests, network errors, or data parse errors show a retryable loading error instead of an indefinite loading screen.
 
 No project code license has been assigned. Public readability, permission to redistribute original datasets and permission to reuse this code are separate questions. This source showcase must not be described as open source.

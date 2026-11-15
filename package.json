@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "python3 scripts/generate_synthetic_demo.py --check && tsc && vite build",
+    "build": "python3 scripts/generate_synthetic_demo.py --check && tsc && vite build && node scripts/test_build_notices.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:watch": "vitest",

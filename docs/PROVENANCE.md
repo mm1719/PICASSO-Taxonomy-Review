@@ -19,7 +19,7 @@ The original app has no project-wide LICENSE file. The owner explicitly confirme
 
 Dependencies are referenced by the existing lockfile but not bundled in the source archive. The metadata inventory records both lockfile license declarations and installed-package license fields where available; missing entries are explicitly unconfirmed. It is not a complete transitive-license, binary-distribution or vulnerability audit.
 
-The installed direct package license texts checked during preparation identify React as MIT, TanStack React Table as MIT, and Lucide as ISC with Feather-origin MIT portions. Those terms do not grant a license to this project's own code or to research datasets. A future hosted/bundled build must preserve the notices required by the exact bundled packages.
+The installed direct package license texts checked during preparation identify React as MIT, TanStack React Table as MIT, and Lucide as ISC with Feather-origin MIT portions. Those terms do not grant a license to this project's own code or to research datasets. The build now emits `THIRD_PARTY_LICENSES.md` using Vite's bundled-dependency license generator and references it from each JavaScript chunk. Build tests check the exact installed versions and full license texts for React, React DOM, Scheduler, Lucide React, TanStack React Table and TanStack Table Core. The complete build output, including this notice file, must remain together when hosted or distributed.
 
 ## Data and disclosure
 

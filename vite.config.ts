@@ -5,6 +5,12 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: "dist",
-    sourcemap: true
+    sourcemap: true,
+    license: { fileName: "THIRD_PARTY_LICENSES.md" },
+    rolldownOptions: {
+      output: {
+        postBanner: "/*! Third-party licenses: /THIRD_PARTY_LICENSES.md */"
+      }
+    }
   }
 });
