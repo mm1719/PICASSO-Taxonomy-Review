@@ -16,6 +16,14 @@ Storage errors remain visible instead of reporting success. A saved backup can b
 - `npm run test:fixtures`: **15 passed**. `npm run build`: publication guard, TypeScript/Vite and **2 notice tests passed**. `npm audit --json`: **0 vulnerabilities**; dependency files are unchanged. `git diff --check`: passed.
 - Browser evidence: `/tmp/picasso-autosave-local-20261115/`, using Node 24.22.3, Playwright 1.65.1 and Chromium 159.0.8154.6. Desktop/mobile status and conflict screenshots were inspected. No regular browser profile or original research output was used.
 
+### Production Verification
+
+- Product/test commit `63dfa3c834ce0719ce0f9c4110fed2b60a01255e` was pushed only to this repository's `main`. Vercel production deployment `dpl_5eSt9HzUGqymWHnYSSXf9UwYTdkK` is READY with that exact SHA and the canonical `picasso-taxonomy-review.vercel.app` alias.
+- The complete Chromium suite against that public HTTPS origin passed **33 tests / 1 intentional skip** in 1.3 minutes. Desktop and mobile emulation both verified autosave recovery, CSV persistence and validation, confirmed discard, unchanged incompatible backups and stale-tab warnings. No uncaught page errors, HTTP errors or attempted network writes occurred.
+- All **1,092 published artifacts** matched the checked-in snapshot: metadata equality plus SHA-256/size checks for the other **1,091 files**. All **1,083 JPEG thumbnails** decoded in Chromium. Existing source credits, license links and actual CSV downloads remained correct. Selected restored-draft and conflict screenshots were visually inspected.
+- Screenshots, downloaded CSVs/backups and asset evidence are under `/tmp/picasso-autosave-production-20261115/`. The original Phase 3 Vercel project response is byte-identical before/after, including deployment `dpl_GjNSJoexbqm1omAAMvsSa2n67kHJ`; its root retains only the two pre-existing EcoTaxa cache changes and its demo remains clean on `agent/coverage-pass-1`. No `public/` or dependency file changed in PICASSO.
+- This record is a documentation-only follow-up to the tested product commit. Chromium mobile emulation does not establish Safari/Firefox or physical-device support. Storage remains local to the browser profile/origin, can be cleared by the user, and is not a multi-user synchronization service.
+
 ## Browser acceptance and fixes (2026-11-15)
 
 The owner explicitly approved isolated Playwright/Chromium after the connected browser remained unavailable. Only this independent repository is writable for this task. Production baseline: `994b573c40e6d8f86e0f7d0f77919c3aac0f297e`, deployment `dpl_DP7d1deGtLxj9rCMUFMQgfW8sURQ` at the PICASSO canonical domain. Earlier browser-unavailable notes below remain historical checkpoints, superseded by this acceptance run.
