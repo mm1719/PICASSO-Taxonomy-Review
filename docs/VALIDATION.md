@@ -15,6 +15,14 @@ The owner explicitly approved isolated Playwright/Chromium after the connected b
 
 Limits: Chromium only, with mobile emulation rather than physical devices. Drafts remain intentionally memory-only: export before reload, closing the tab or leaving the mapping section. This work does not add cross-session storage or spreadsheet-formula sanitization. Provider link destinations/credits are checked against the approved publication snapshot; no new external taxonomy/license audit was performed. No original Phase 3 generator or research QC pipeline was run.
 
+### Production browser verification
+
+- Product/test commit `9f81a2b8d97cb958eae8e8ec6e1107970aeb4e8f` was pushed to this repository's `main`. Vercel production deployment `dpl_2CBVY4JHJpxhAk9e98tJkYfCkAsR` is READY with that exact Git SHA and the canonical `picasso-taxonomy-review.vercel.app` alias.
+- The full suite against that public HTTPS alias finished **21 passed / 1 intentionally skipped** in 1.1 minutes, including all desktop/mobile interactions and the complete asset check. There were no uncaught page errors, failed HTTP responses or attempted network writes. Selected desktop/mobile screenshots were visually inspected, including real source thumbnails, credits and mapping controls.
+- Production screenshots, actual downloads, rejected test CSVs and the asset-verification attachment are under `/tmp/picasso-browser-production-20261115/`; the local HTML runner report is ignored under `playwright-report/`. These local evidence paths are not public downloads.
+- No `public/` file changed from baseline. The original Phase 3 Vercel project response is byte-identical before/after, including production deployment `dpl_GjNSJoexbqm1omAAMvsSa2n67kHJ`. Its root still has only the two pre-existing EcoTaxa cache changes; the original demo submodule remains clean on `agent/coverage-pass-1`. The browser target guard was separately exercised and rejected the original site's URL before launch.
+- This verification record is a documentation-only follow-up to the tested product commit; it changes neither the application nor its data.
+
 ## Completed change: licensed dataset subset (2026-11-15)
 
 Owner-approved scope: publish only LifeWatch and MedPlanktonSet, at most five distinct images per dataset/source label across all views, preserving reviewed lineage, risk flags and stable mapping IDs. Original Phase 3 inputs are read-only. Mapping history covers LifeWatch only; MedPlanktonSet has no formal mapping history and must not acquire invented keep decisions. Historical merge destinations outside LifeWatch may appear as zero-image reference targets, without other datasets' images or counts.
