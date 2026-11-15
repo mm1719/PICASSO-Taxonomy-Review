@@ -1,130 +1,2024 @@
 {
-  "tables": {
-    "non_taxonomic_category": [
-      {
-        "group_key": "synthetic-invalid-1",
-        "pseudo_aphia_id": "ntc_001",
-        "sample_key": "synthetic-invalid-1",
-        "aliases": [
-          "Synthetic debris"
-        ],
-        "status": "Non-Taxonomic Category",
-        "dataset_ids": [
-          "synthetic_alpha"
-        ],
-        "total_image_count": 4,
-        "include_valid_tree_overlap": false,
-        "invalid_reason_count": 1,
-        "valid_image_count": 0,
-        "invalid_image_count": 4,
-        "datasets": [
-          {
-            "dataset_id": "synthetic_alpha",
-            "instrument": "Demo imager A",
-            "license": "Not a research dataset",
-            "license_status": "synthetic",
-            "aliases": [
-              "Synthetic debris"
-            ],
-            "image_count": 4,
-            "reasons": [
-              "Invented review example"
-            ],
-            "source_examples": [
-              "synthetic/review-1.csv"
-            ],
-            "worms_sources": [],
-            "valid_tree_entry": "no",
-            "invalid_reason_count": 1,
-            "valid_image_count": 0,
-            "invalid_image_count": 4
-          }
-        ]
-      }
-    ],
-    "taxonomic_mismatch": [
-      {
-        "group_key": "synthetic-invalid-2",
-        "pseudo_aphia_id": "tm_001",
-        "sample_key": "synthetic-invalid-2",
-        "aliases": [
-          "Rounded form"
-        ],
-        "status": "Taxonomic Mismatch",
-        "dataset_ids": [
-          "synthetic_beta"
-        ],
-        "total_image_count": 8,
-        "include_valid_tree_overlap": true,
-        "invalid_reason_count": 1,
-        "valid_image_count": 8,
-        "invalid_image_count": 8,
-        "datasets": [
-          {
-            "dataset_id": "synthetic_beta",
-            "instrument": "Demo imager B",
-            "license": "Not a research dataset",
-            "license_status": "synthetic",
-            "aliases": [
-              "Rounded form"
-            ],
-            "image_count": 8,
-            "reasons": [
-              "Invented review example"
-            ],
-            "source_examples": [
-              "synthetic/review-2.csv"
-            ],
-            "worms_sources": [],
-            "valid_tree_entry": "yes",
-            "invalid_reason_count": 1,
-            "valid_image_count": 8,
-            "invalid_image_count": 8
-          }
-        ]
-      }
-    ]
-  },
   "samples": {
-    "synthetic-invalid-1": [
+    "non_taxonomic_category::artefact": [
       {
-        "dataset_id": "synthetic_alpha",
-        "label": "Synthetic debris",
-        "image_id": "invalid-1",
-        "thumbnail_url": "/invalid-samples/invalid-1.svg",
-        "source_ref": "synthetic/invalid-1.svg",
-        "width": "240",
-        "height": "180"
+        "dataset_id": "life_watch",
+        "height": "91",
+        "image_id": "69E247B0-7F9E-48D3-8368-3637D246F80A",
+        "label": "Artefact",
+        "source_ref": "datasets/LifeWatch/data/images/Artefact/ecotaxa_Artefact_69E247B0-7F9E-48D3-8368-3637D246F80A.jpg",
+        "thumbnail_url": "/images/life_watch/74e442ddb2c67a2a5f5cddb6.jpg",
+        "width": "70"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "71",
+        "image_id": "131798AA-8308-453E-876A-868F3C6782B5",
+        "label": "Artefact",
+        "source_ref": "datasets/LifeWatch/data/images/Artefact/ecotaxa_Artefact_131798AA-8308-453E-876A-868F3C6782B5.jpg",
+        "thumbnail_url": "/images/life_watch/22a8cd9895e4509a1fbc4f02.jpg",
+        "width": "49"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "155",
+        "image_id": "E5993A88-7A43-4E11-A01E-7B5181B646E6",
+        "label": "Artefact",
+        "source_ref": "datasets/LifeWatch/data/images/Artefact/ecotaxa_Artefact_E5993A88-7A43-4E11-A01E-7B5181B646E6.jpg",
+        "thumbnail_url": "/images/life_watch/4f749fb60ad68f84d3e70a69.jpg",
+        "width": "75"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "67",
+        "image_id": "1076DC9D-7492-43A2-B190-25304B55D533",
+        "label": "Artefact",
+        "source_ref": "datasets/LifeWatch/data/images/Artefact/ecotaxa_Artefact_1076DC9D-7492-43A2-B190-25304B55D533.jpg",
+        "thumbnail_url": "/images/life_watch/debd26c4373edc51271a9efc.jpg",
+        "width": "60"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "40",
+        "image_id": "B71364F8-75F1-435F-B11B-FBE83E95F010",
+        "label": "Artefact",
+        "source_ref": "datasets/LifeWatch/data/images/Artefact/ecotaxa_Artefact_B71364F8-75F1-435F-B11B-FBE83E95F010.jpg",
+        "thumbnail_url": "/images/life_watch/5dc9e6121bbe095cb2ebbbf7.jpg",
+        "width": "78"
       }
     ],
-    "synthetic-invalid-2": [
+    "non_taxonomic_category::bellerochea horologicalis": [
       {
-        "dataset_id": "synthetic_beta",
-        "label": "Rounded form",
-        "image_id": "invalid-2",
-        "thumbnail_url": "/invalid-samples/invalid-2.svg",
-        "source_ref": "synthetic/invalid-2.svg",
-        "width": "240",
-        "height": "180"
+        "dataset_id": "life_watch",
+        "height": "51",
+        "image_id": "5F2387BD-01DB-423A-BDD9-D88E7BB89B9C",
+        "label": "Bellerochea_horologicalis",
+        "source_ref": "datasets/LifeWatch/data/images/Bellerochea_horologicalis/ecotaxa_Bellerochea_horologicalis_5F2387BD-01DB-423A-BDD9-D88E7BB89B9C.jpg",
+        "thumbnail_url": "/images/life_watch/8848621f27196757a5beeea7.jpg",
+        "width": "165"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "253",
+        "image_id": "B08616AF-260F-48B5-9434-C7188F4A4829",
+        "label": "Bellerochea_horologicalis",
+        "source_ref": "datasets/LifeWatch/data/images/Bellerochea_horologicalis/ecotaxa_Bellerochea_horologicalis_B08616AF-260F-48B5-9434-C7188F4A4829.jpg",
+        "thumbnail_url": "/images/life_watch/897c0e9458fa37ecc85cc4bf.jpg",
+        "width": "96"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "196",
+        "image_id": "B7B8F78F-6361-4179-A41B-1CA0D89C22BA",
+        "label": "Bellerochea_horologicalis",
+        "source_ref": "datasets/LifeWatch/data/images/Bellerochea_horologicalis/ecotaxa_Bellerochea_horologicalis_B7B8F78F-6361-4179-A41B-1CA0D89C22BA.jpg",
+        "thumbnail_url": "/images/life_watch/0c464497753b2da183d1e2da.jpg",
+        "width": "131"
+      }
+    ],
+    "non_taxonomic_category::bubble": [
+      {
+        "dataset_id": "life_watch",
+        "height": "68",
+        "image_id": "3EDB98E3-1BFC-4D91-A3C2-C11120BD32B1",
+        "label": "Bubbles",
+        "source_ref": "datasets/LifeWatch/data/images/Bubbles/ecotaxa_Bubbles_3EDB98E3-1BFC-4D91-A3C2-C11120BD32B1.jpg",
+        "thumbnail_url": "/images/life_watch/5b22cf524b8cece0d4196ab1.jpg",
+        "width": "68"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "56",
+        "image_id": "798B236F-FCED-4813-A356-99EF0C01CAFF",
+        "label": "Bubbles",
+        "source_ref": "datasets/LifeWatch/data/images/Bubbles/ecotaxa_Bubbles_798B236F-FCED-4813-A356-99EF0C01CAFF.jpg",
+        "thumbnail_url": "/images/life_watch/e342cd93a9b18e935b275685.jpg",
+        "width": "54"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "51",
+        "image_id": "BB4B41EE-3584-4B2F-9299-25CB61DF6077",
+        "label": "Bubbles",
+        "source_ref": "datasets/LifeWatch/data/images/Bubbles/ecotaxa_Bubbles_BB4B41EE-3584-4B2F-9299-25CB61DF6077.jpg",
+        "thumbnail_url": "/images/life_watch/4706b61c4ddaa08fd532abef.jpg",
+        "width": "51"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "62",
+        "image_id": "B29C3A75-6DEC-4E00-A0D0-0E6061AF44EF",
+        "label": "Bubbles",
+        "source_ref": "datasets/LifeWatch/data/images/Bubbles/ecotaxa_Bubbles_B29C3A75-6DEC-4E00-A0D0-0E6061AF44EF.jpg",
+        "thumbnail_url": "/images/life_watch/7ef1a46fe403a02441f44068.jpg",
+        "width": "42"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "67",
+        "image_id": "2202E14D-3C46-4612-8B7B-2804961061EB",
+        "label": "Bubbles",
+        "source_ref": "datasets/LifeWatch/data/images/Bubbles/ecotaxa_Bubbles_2202E14D-3C46-4612-8B7B-2804961061EB.jpg",
+        "thumbnail_url": "/images/life_watch/8ba3fb42a3d7dc2c035ac271.jpg",
+        "width": "68"
+      }
+    ],
+    "non_taxonomic_category::crustaceae-part": [
+      {
+        "dataset_id": "life_watch",
+        "height": "96",
+        "image_id": "FC0FFEE7-B0CD-489A-A263-05EA708B07E9",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_FC0FFEE7-B0CD-489A-A263-05EA708B07E9.jpg",
+        "thumbnail_url": "/images/life_watch/3a963b2cc3f53d433d22b9bc.jpg",
+        "width": "102"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "231",
+        "image_id": "D655B8B2-36DB-43DD-A256-75EC5D2A2922",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_D655B8B2-36DB-43DD-A256-75EC5D2A2922.jpg",
+        "thumbnail_url": "/images/life_watch/f8c72c657e62222000b3878e.jpg",
+        "width": "39"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "94",
+        "image_id": "A5F6AA5A-B574-4FE8-A120-7C93863019D9",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_A5F6AA5A-B574-4FE8-A120-7C93863019D9.jpg",
+        "thumbnail_url": "/images/life_watch/f3f8aba7048fa500d6eeaadd.jpg",
+        "width": "77"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "250",
+        "image_id": "C07113ED-8933-48FA-A938-E97A070E7491",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_C07113ED-8933-48FA-A938-E97A070E7491.jpg",
+        "thumbnail_url": "/images/life_watch/145f3f6ccef82e4f5472c3aa.jpg",
+        "width": "149"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "76",
+        "image_id": "ADB2D1B1-A474-4490-8DE9-482B767B06FE",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_ADB2D1B1-A474-4490-8DE9-482B767B06FE.jpg",
+        "thumbnail_url": "/images/life_watch/ec5e0e3f5ca8a45595eb0005.jpg",
+        "width": "120"
+      }
+    ],
+    "non_taxonomic_category::detritus": [
+      {
+        "dataset_id": "life_watch",
+        "height": "77",
+        "image_id": "04BA89E0-1816-4CA7-AB84-9A4D4EFBD449",
+        "label": "Detritus",
+        "source_ref": "datasets/LifeWatch/data/images/Detritus/ecotaxa_Detritus_04BA89E0-1816-4CA7-AB84-9A4D4EFBD449.jpg",
+        "thumbnail_url": "/images/life_watch/ed98d9a22b6f67e8d2e4d249.jpg",
+        "width": "87"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "62",
+        "image_id": "34E20E82-A271-4003-B771-D05297E1B565",
+        "label": "Detritus",
+        "source_ref": "datasets/LifeWatch/data/images/Detritus/ecotaxa_Detritus_34E20E82-A271-4003-B771-D05297E1B565.jpg",
+        "thumbnail_url": "/images/life_watch/df306623c47e04454c2c6ab8.jpg",
+        "width": "74"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "65",
+        "image_id": "CEC489E7-484E-4B72-8A35-1CC90B9401F3",
+        "label": "Detritus",
+        "source_ref": "datasets/LifeWatch/data/images/Detritus/ecotaxa_Detritus_CEC489E7-484E-4B72-8A35-1CC90B9401F3.jpg",
+        "thumbnail_url": "/images/life_watch/011a1a94f0fe290e67177dfa.jpg",
+        "width": "45"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "118",
+        "image_id": "90C51897-FC88-4DF0-B4C3-E9F6219EB850",
+        "label": "Detritus",
+        "source_ref": "datasets/LifeWatch/data/images/Detritus/ecotaxa_Detritus_90C51897-FC88-4DF0-B4C3-E9F6219EB850.jpg",
+        "thumbnail_url": "/images/life_watch/5318c6890f0641e0ad3657d9.jpg",
+        "width": "76"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "140",
+        "image_id": "670498DB-CEF6-427D-AF8A-450733692617",
+        "label": "Detritus",
+        "source_ref": "datasets/LifeWatch/data/images/Detritus/ecotaxa_Detritus_670498DB-CEF6-427D-AF8A-450733692617.jpg",
+        "thumbnail_url": "/images/life_watch/71ff2018a2bbdd963bd7eb0b.jpg",
+        "width": "161"
+      }
+    ],
+    "non_taxonomic_category::dinoflagellate cyst": [
+      {
+        "dataset_id": "life_watch",
+        "height": "77",
+        "image_id": "2F175597-5436-499B-8C83-F4639FC119F9",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_2F175597-5436-499B-8C83-F4639FC119F9.jpg",
+        "thumbnail_url": "/images/life_watch/dd09b82e7ed5bcfba161c1eb.jpg",
+        "width": "71"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "90",
+        "image_id": "44D9841B-1DC1-4D49-992F-2CDD398A15A6",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_44D9841B-1DC1-4D49-992F-2CDD398A15A6.jpg",
+        "thumbnail_url": "/images/life_watch/1631e7fc36ac4c1587e0d11b.jpg",
+        "width": "29"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "133",
+        "image_id": "CAC19DD3-11C3-4151-8046-5169713CEE19",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_CAC19DD3-11C3-4151-8046-5169713CEE19.jpg",
+        "thumbnail_url": "/images/life_watch/491eca5a7aea6547fd2e3881.jpg",
+        "width": "86"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "85",
+        "image_id": "6217FC9B-02C8-411C-BE52-993C5AFB87F3",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_6217FC9B-02C8-411C-BE52-993C5AFB87F3.jpg",
+        "thumbnail_url": "/images/life_watch/c33ad2e5d28a3c8ec661ccda.jpg",
+        "width": "84"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "64",
+        "image_id": "D9F00C1E-3467-46E8-B37B-1B9A6A3166D6",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_D9F00C1E-3467-46E8-B37B-1B9A6A3166D6.jpg",
+        "thumbnail_url": "/images/life_watch/43dacf5e70bd94f324c4dc6c.jpg",
+        "width": "94"
+      }
+    ],
+    "non_taxonomic_category::egg/cyst": [
+      {
+        "dataset_id": "life_watch",
+        "height": "78",
+        "image_id": "10CCCEB8-BEBB-4DC3-BA5F-904F05E43E71",
+        "label": "Egg+Cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Egg+Cyst/ecotaxa_Egg+Cyst_10CCCEB8-BEBB-4DC3-BA5F-904F05E43E71.jpg",
+        "thumbnail_url": "/images/life_watch/c50512e718bb9afd651715ca.jpg",
+        "width": "83"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "75",
+        "image_id": "9D353E8A-3224-48D7-91D3-0724228F0279",
+        "label": "Egg+Cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Egg+Cyst/ecotaxa_Egg+Cyst_9D353E8A-3224-48D7-91D3-0724228F0279.jpg",
+        "thumbnail_url": "/images/life_watch/ccda3af58c984240494408a2.jpg",
+        "width": "81"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "85",
+        "image_id": "BB8561F4-119D-4A52-B078-F28391E6DD44",
+        "label": "Egg+Cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Egg+Cyst/ecotaxa_Egg+Cyst_BB8561F4-119D-4A52-B078-F28391E6DD44.jpg",
+        "thumbnail_url": "/images/life_watch/329b04f6be36620750820890.jpg",
+        "width": "82"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "84",
+        "image_id": "DEB31F12-1C00-468E-B6B5-127C9DFD1B1D",
+        "label": "Egg+Cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Egg+Cyst/ecotaxa_Egg+Cyst_DEB31F12-1C00-468E-B6B5-127C9DFD1B1D.jpg",
+        "thumbnail_url": "/images/life_watch/e81ab83843a5887040637e89.jpg",
+        "width": "60"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "76",
+        "image_id": "3ECBCC92-C74C-4AFD-A2ED-8556744BADE0",
+        "label": "Egg+Cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Egg+Cyst/ecotaxa_Egg+Cyst_3ECBCC92-C74C-4AFD-A2ED-8556744BADE0.jpg",
+        "thumbnail_url": "/images/life_watch/b8576507864f96c2f1b62a7b.jpg",
+        "width": "76"
+      }
+    ],
+    "non_taxonomic_category::faecal pellet": [
+      {
+        "dataset_id": "life_watch",
+        "height": "169",
+        "image_id": "9E8FD4F4-8178-4F04-B78A-3834C96F1ED8",
+        "label": "Faecal_pellet",
+        "source_ref": "datasets/LifeWatch/data/images/Faecal_pellet/ecotaxa_Faecal_pellet_9E8FD4F4-8178-4F04-B78A-3834C96F1ED8.jpg",
+        "thumbnail_url": "/images/life_watch/587efce1a4f3432fddd2cc54.jpg",
+        "width": "103"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "100",
+        "image_id": "19980D40-7583-4863-8225-96751C13D239",
+        "label": "Faecal_pellet",
+        "source_ref": "datasets/LifeWatch/data/images/Faecal_pellet/ecotaxa_Faecal_pellet_19980D40-7583-4863-8225-96751C13D239.jpg",
+        "thumbnail_url": "/images/life_watch/22ab2379804bcde1fd83db9e.jpg",
+        "width": "117"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "110",
+        "image_id": "9CDC6516-7190-4E56-90FC-51C9CE0D870A",
+        "label": "Faecal_pellet",
+        "source_ref": "datasets/LifeWatch/data/images/Faecal_pellet/ecotaxa_Faecal_pellet_9CDC6516-7190-4E56-90FC-51C9CE0D870A.jpg",
+        "thumbnail_url": "/images/life_watch/2be5ec887c7920924e291396.jpg",
+        "width": "80"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "182",
+        "image_id": "4D77339E-C85D-4162-9ECE-C2D9F813943E",
+        "label": "Faecal_pellet",
+        "source_ref": "datasets/LifeWatch/data/images/Faecal_pellet/ecotaxa_Faecal_pellet_4D77339E-C85D-4162-9ECE-C2D9F813943E.jpg",
+        "thumbnail_url": "/images/life_watch/9ccbb9e2e2ef69eebdc0c0d3.jpg",
+        "width": "80"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "157",
+        "image_id": "B5E3222F-FDDD-4B54-91A2-116087B111D2",
+        "label": "Faecal_pellet",
+        "source_ref": "datasets/LifeWatch/data/images/Faecal_pellet/ecotaxa_Faecal_pellet_B5E3222F-FDDD-4B54-91A2-116087B111D2.jpg",
+        "thumbnail_url": "/images/life_watch/be8b724723f4f374dfa78bdc.jpg",
+        "width": "50"
+      }
+    ],
+    "non_taxonomic_category::fiber": [
+      {
+        "dataset_id": "life_watch",
+        "height": "159",
+        "image_id": "2C01348A-A6CB-4C36-8910-0A4E01187B19",
+        "label": "Fibers",
+        "source_ref": "datasets/LifeWatch/data/images/Fibers/ecotaxa_Fibers_2C01348A-A6CB-4C36-8910-0A4E01187B19.jpg",
+        "thumbnail_url": "/images/life_watch/3561bd772049e067a4f59045.jpg",
+        "width": "18"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "77",
+        "image_id": "4C69FE6E-0AA5-4CBA-BB94-4140D2084F7D",
+        "label": "Fibers",
+        "source_ref": "datasets/LifeWatch/data/images/Fibers/ecotaxa_Fibers_4C69FE6E-0AA5-4CBA-BB94-4140D2084F7D.jpg",
+        "thumbnail_url": "/images/life_watch/4acdec6f72c33f80f7b6a187.jpg",
+        "width": "29"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "92",
+        "image_id": "B449A03F-68FD-49B1-BB05-7A3AA22FD137",
+        "label": "Fibers",
+        "source_ref": "datasets/LifeWatch/data/images/Fibers/ecotaxa_Fibers_B449A03F-68FD-49B1-BB05-7A3AA22FD137.jpg",
+        "thumbnail_url": "/images/life_watch/e73f2b1b5bd977af0881d774.jpg",
+        "width": "20"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "37",
+        "image_id": "243AF60F-FF06-4BBB-95B2-09C773788160",
+        "label": "Fibers",
+        "source_ref": "datasets/LifeWatch/data/images/Fibers/ecotaxa_Fibers_243AF60F-FF06-4BBB-95B2-09C773788160.jpg",
+        "thumbnail_url": "/images/life_watch/2edda9b17ad6eb5e7c47ce98.jpg",
+        "width": "107"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "91",
+        "image_id": "51913AB0-5C36-4A82-8A4E-61A1478BDA2B",
+        "label": "Fibers",
+        "source_ref": "datasets/LifeWatch/data/images/Fibers/ecotaxa_Fibers_51913AB0-5C36-4A82-8A4E-61A1478BDA2B.jpg",
+        "thumbnail_url": "/images/life_watch/41804cce4c32532c88c4a225.jpg",
+        "width": "46"
+      }
+    ],
+    "non_taxonomic_category::phytoplankton colony": [
+      {
+        "dataset_id": "life_watch",
+        "height": "139",
+        "image_id": "212BFF4C-A805-4F82-A737-88F1BAB50277",
+        "label": "Phytoplankton_Colony",
+        "source_ref": "datasets/LifeWatch/data/images/Phytoplankton_Colony/ecotaxa_Phytoplankton_Colony_212BFF4C-A805-4F82-A737-88F1BAB50277.jpg",
+        "thumbnail_url": "/images/life_watch/2d4a745f3f52132668f3bafd.jpg",
+        "width": "125"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "64",
+        "image_id": "37DF7F7B-C92C-4365-99D6-855A879D486F",
+        "label": "Phytoplankton_Colony",
+        "source_ref": "datasets/LifeWatch/data/images/Phytoplankton_Colony/ecotaxa_Phytoplankton_Colony_37DF7F7B-C92C-4365-99D6-855A879D486F.jpg",
+        "thumbnail_url": "/images/life_watch/859e9db9d1687bde88dfc825.jpg",
+        "width": "41"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "68",
+        "image_id": "F16D9EDB-6EE9-4EE4-8BFF-77574921D640",
+        "label": "Phytoplankton_Colony",
+        "source_ref": "datasets/LifeWatch/data/images/Phytoplankton_Colony/ecotaxa_Phytoplankton_Colony_F16D9EDB-6EE9-4EE4-8BFF-77574921D640.jpg",
+        "thumbnail_url": "/images/life_watch/cae716789022f9d6c374d1fe.jpg",
+        "width": "69"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "63",
+        "image_id": "BFC87C38-1168-43FE-9F9D-C118E2FD70E8",
+        "label": "Phytoplankton_Colony",
+        "source_ref": "datasets/LifeWatch/data/images/Phytoplankton_Colony/ecotaxa_Phytoplankton_Colony_BFC87C38-1168-43FE-9F9D-C118E2FD70E8.jpg",
+        "thumbnail_url": "/images/life_watch/01c4efb25b5d9deea6f94c5f.jpg",
+        "width": "87"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "73",
+        "image_id": "BC93614F-0C4B-42CD-B6F8-F5519F70EE55",
+        "label": "Phytoplankton_Colony",
+        "source_ref": "datasets/LifeWatch/data/images/Phytoplankton_Colony/ecotaxa_Phytoplankton_Colony_BC93614F-0C4B-42CD-B6F8-F5519F70EE55.jpg",
+        "thumbnail_url": "/images/life_watch/cc718ebd9f96e339d7e29eba.jpg",
+        "width": "47"
+      }
+    ],
+    "non_taxonomic_category::pollen": [
+      {
+        "dataset_id": "life_watch",
+        "height": "69",
+        "image_id": "5BDD8D17-FC22-43D2-84B3-50B2222BBE07",
+        "label": "Pollen",
+        "source_ref": "datasets/LifeWatch/data/images/Pollen/ecotaxa_Pollen_5BDD8D17-FC22-43D2-84B3-50B2222BBE07.jpg",
+        "thumbnail_url": "/images/life_watch/dbddf4de64e2d2a5f29a943c.jpg",
+        "width": "70"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "91",
+        "image_id": "26D31391-D194-4F19-93C7-5BF977BF4109",
+        "label": "Pollen",
+        "source_ref": "datasets/LifeWatch/data/images/Pollen/ecotaxa_Pollen_26D31391-D194-4F19-93C7-5BF977BF4109.jpg",
+        "thumbnail_url": "/images/life_watch/c2653c94d13f2f2105c5038a.jpg",
+        "width": "91"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "91",
+        "image_id": "FE11183C-84E6-46FF-BAA1-F04817B56753",
+        "label": "Pollen",
+        "source_ref": "datasets/LifeWatch/data/images/Pollen/ecotaxa_Pollen_FE11183C-84E6-46FF-BAA1-F04817B56753.jpg",
+        "thumbnail_url": "/images/life_watch/8423dcc5d5865bfb647c135a.jpg",
+        "width": "76"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "95",
+        "image_id": "4431EB83-CDF2-49BB-A351-27B048BC81C8",
+        "label": "Pollen",
+        "source_ref": "datasets/LifeWatch/data/images/Pollen/ecotaxa_Pollen_4431EB83-CDF2-49BB-A351-27B048BC81C8.jpg",
+        "thumbnail_url": "/images/life_watch/2cc2ace66f678266f2384b5a.jpg",
+        "width": "88"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "67",
+        "image_id": "2B001DCB-70B3-414C-A1D6-D72DECDE33FE",
+        "label": "Pollen",
+        "source_ref": "datasets/LifeWatch/data/images/Pollen/ecotaxa_Pollen_2B001DCB-70B3-414C-A1D6-D72DECDE33FE.jpg",
+        "thumbnail_url": "/images/life_watch/ff7ec4ac7da8a98424bd6f74.jpg",
+        "width": "76"
+      }
+    ],
+    "non_taxonomic_category::remnant": [
+      {
+        "dataset_id": "life_watch",
+        "height": "80",
+        "image_id": "B56110F6-C5C2-484A-84B6-F276720FC91C",
+        "label": "Remnant",
+        "source_ref": "datasets/LifeWatch/data/images/Remnant/ecotaxa_Remnant_B56110F6-C5C2-484A-84B6-F276720FC91C.jpg",
+        "thumbnail_url": "/images/life_watch/89c5d340885c58d7cc0d0095.jpg",
+        "width": "139"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "56",
+        "image_id": "1A6E73BF-7BCF-4456-BD23-0A32812678C7",
+        "label": "Remnant",
+        "source_ref": "datasets/LifeWatch/data/images/Remnant/ecotaxa_Remnant_1A6E73BF-7BCF-4456-BD23-0A32812678C7.jpg",
+        "thumbnail_url": "/images/life_watch/6305fa362b231e4cadc517c9.jpg",
+        "width": "47"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "96",
+        "image_id": "4220AEAF-C4E8-4B59-BE6E-CB0505BA41C4",
+        "label": "Remnant",
+        "source_ref": "datasets/LifeWatch/data/images/Remnant/ecotaxa_Remnant_4220AEAF-C4E8-4B59-BE6E-CB0505BA41C4.jpg",
+        "thumbnail_url": "/images/life_watch/5e33408d2a6ee97e17e3f93d.jpg",
+        "width": "72"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "82",
+        "image_id": "FEC8E96C-8105-41FC-8A14-3468597D9E1D",
+        "label": "Remnant",
+        "source_ref": "datasets/LifeWatch/data/images/Remnant/ecotaxa_Remnant_FEC8E96C-8105-41FC-8A14-3468597D9E1D.jpg",
+        "thumbnail_url": "/images/life_watch/8f87b8c0becb0ad4cc15e3ea.jpg",
+        "width": "57"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "59",
+        "image_id": "0AFE061E-7C6A-42F8-AC8B-A71173977D70",
+        "label": "Remnant",
+        "source_ref": "datasets/LifeWatch/data/images/Remnant/ecotaxa_Remnant_0AFE061E-7C6A-42F8-AC8B-A71173977D70.jpg",
+        "thumbnail_url": "/images/life_watch/93bb04eba08fc24f3ae726f0.jpg",
+        "width": "138"
+      }
+    ],
+    "non_taxonomic_category::veliger larvae d-shaped": [
+      {
+        "dataset_id": "life_watch",
+        "height": "78",
+        "image_id": "EAE7102E-5A12-4F07-830C-A0D26D7CBB3A",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_EAE7102E-5A12-4F07-830C-A0D26D7CBB3A.jpg",
+        "thumbnail_url": "/images/life_watch/5a0dfe63c0fa93633694d450.jpg",
+        "width": "84"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "66",
+        "image_id": "A36581ED-3F56-4CF9-9995-9CC387268DB1",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_A36581ED-3F56-4CF9-9995-9CC387268DB1.jpg",
+        "thumbnail_url": "/images/life_watch/c626b1bbeab87e605ed43e47.jpg",
+        "width": "59"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "94",
+        "image_id": "6650BBD6-DDA7-46B4-B6FF-1552626A4FBD",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_6650BBD6-DDA7-46B4-B6FF-1552626A4FBD.jpg",
+        "thumbnail_url": "/images/life_watch/505decad49410bc254c02a8f.jpg",
+        "width": "86"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "84",
+        "image_id": "260AC09B-2B90-45FE-BE63-E87C3E46A9E3",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_260AC09B-2B90-45FE-BE63-E87C3E46A9E3.jpg",
+        "thumbnail_url": "/images/life_watch/efb94c1183827f7b054045dc.jpg",
+        "width": "78"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "88",
+        "image_id": "2893FF6E-2021-45C7-A8C1-B36A9BBFA558",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_2893FF6E-2021-45C7-A8C1-B36A9BBFA558.jpg",
+        "thumbnail_url": "/images/life_watch/9eeec6de6bd0861c50ba6023.jpg",
+        "width": "91"
+      }
+    ],
+    "non_taxonomic_category::zooplankton": [
+      {
+        "dataset_id": "life_watch",
+        "height": "99",
+        "image_id": "726CBD5D-AB9B-4C44-9155-C17F33994C40",
+        "label": "Zooplankton",
+        "source_ref": "datasets/LifeWatch/data/images/Zooplankton/ecotaxa_Zooplankton_726CBD5D-AB9B-4C44-9155-C17F33994C40.jpg",
+        "thumbnail_url": "/images/life_watch/991f8ab1b803a7456790d57d.jpg",
+        "width": "118"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "87",
+        "image_id": "A6FAEA48-668B-417E-AA8D-F4867DECC9AB",
+        "label": "Zooplankton",
+        "source_ref": "datasets/LifeWatch/data/images/Zooplankton/ecotaxa_Zooplankton_A6FAEA48-668B-417E-AA8D-F4867DECC9AB.jpg",
+        "thumbnail_url": "/images/life_watch/e5913007125f56d80f571e7f.jpg",
+        "width": "75"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "70",
+        "image_id": "F44B2619-45BD-4B9E-B497-AC5984018655",
+        "label": "Zooplankton",
+        "source_ref": "datasets/LifeWatch/data/images/Zooplankton/ecotaxa_Zooplankton_F44B2619-45BD-4B9E-B497-AC5984018655.jpg",
+        "thumbnail_url": "/images/life_watch/ac28a81ed94afc9b21e0a201.jpg",
+        "width": "104"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "131",
+        "image_id": "D31F9643-3FE2-457F-916A-05075AE6E71F",
+        "label": "Zooplankton",
+        "source_ref": "datasets/LifeWatch/data/images/Zooplankton/ecotaxa_Zooplankton_D31F9643-3FE2-457F-916A-05075AE6E71F.jpg",
+        "thumbnail_url": "/images/life_watch/7fc791341811be1cec113cad.jpg",
+        "width": "89"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "124",
+        "image_id": "C5065933-0393-4262-887D-D2760C70B3C4",
+        "label": "Zooplankton",
+        "source_ref": "datasets/LifeWatch/data/images/Zooplankton/ecotaxa_Zooplankton_C5065933-0393-4262-887D-D2760C70B3C4.jpg",
+        "thumbnail_url": "/images/life_watch/b6bfd694677be42bee87ccde.jpg",
+        "width": "89"
+      }
+    ],
+    "taxonomic_mismatch::bellerochea horologicalis": [
+      {
+        "dataset_id": "life_watch",
+        "height": "63",
+        "image_id": "BCFE386B-1F84-4517-BCE8-461561B56B9B",
+        "label": "Bellerochea_horologicalis",
+        "source_ref": "datasets/LifeWatch/data/images/Bellerochea_horologicalis/ecotaxa_Bellerochea_horologicalis_BCFE386B-1F84-4517-BCE8-461561B56B9B.jpg",
+        "thumbnail_url": "/images/life_watch/26b99486c4c47e90fbaec782.jpg",
+        "width": "95"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "68",
+        "image_id": "CE161843-510C-4419-A442-1F575FB642E6",
+        "label": "Bellerochea_horologicalis",
+        "source_ref": "datasets/LifeWatch/data/images/Bellerochea_horologicalis/ecotaxa_Bellerochea_horologicalis_CE161843-510C-4419-A442-1F575FB642E6.jpg",
+        "thumbnail_url": "/images/life_watch/e85d33304c286e1e7bdadba5.jpg",
+        "width": "82"
+      }
+    ],
+    "taxonomic_mismatch::copepod eggs": [
+      {
+        "dataset_id": "medplanktonset",
+        "height": "348",
+        "image_id": "D20240506T175238_IFCB181_01115",
+        "label": "Copepod_eggs",
+        "source_ref": "IFCB_images.zip::IFCB_images/Copepod_eggs/D20240506T175238_IFCB181_01115.png",
+        "thumbnail_url": "/images/medplanktonset/0a39855f2c48791dcf438740.jpg",
+        "width": "424"
+      }
+    ],
+    "taxonomic_mismatch::crustaceae-part": [
+      {
+        "dataset_id": "life_watch",
+        "height": "96",
+        "image_id": "FC0FFEE7-B0CD-489A-A263-05EA708B07E9",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_FC0FFEE7-B0CD-489A-A263-05EA708B07E9.jpg",
+        "thumbnail_url": "/images/life_watch/3a963b2cc3f53d433d22b9bc.jpg",
+        "width": "102"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "231",
+        "image_id": "D655B8B2-36DB-43DD-A256-75EC5D2A2922",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_D655B8B2-36DB-43DD-A256-75EC5D2A2922.jpg",
+        "thumbnail_url": "/images/life_watch/f8c72c657e62222000b3878e.jpg",
+        "width": "39"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "94",
+        "image_id": "A5F6AA5A-B574-4FE8-A120-7C93863019D9",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_A5F6AA5A-B574-4FE8-A120-7C93863019D9.jpg",
+        "thumbnail_url": "/images/life_watch/f3f8aba7048fa500d6eeaadd.jpg",
+        "width": "77"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "250",
+        "image_id": "C07113ED-8933-48FA-A938-E97A070E7491",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_C07113ED-8933-48FA-A938-E97A070E7491.jpg",
+        "thumbnail_url": "/images/life_watch/145f3f6ccef82e4f5472c3aa.jpg",
+        "width": "149"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "76",
+        "image_id": "ADB2D1B1-A474-4490-8DE9-482B767B06FE",
+        "label": "Crustaceae-part",
+        "source_ref": "datasets/LifeWatch/data/images/Crustaceae-part/ecotaxa_Crustaceae-part_ADB2D1B1-A474-4490-8DE9-482B767B06FE.jpg",
+        "thumbnail_url": "/images/life_watch/ec5e0e3f5ca8a45595eb0005.jpg",
+        "width": "120"
+      }
+    ],
+    "taxonomic_mismatch::dinoflagellata": [
+      {
+        "dataset_id": "life_watch",
+        "height": "92",
+        "image_id": "A8869263-3ACE-4E91-9194-C86B484EF09F",
+        "label": "Dinoflagellata",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellata/ecotaxa_Dinoflagellata_A8869263-3ACE-4E91-9194-C86B484EF09F.jpg",
+        "thumbnail_url": "/images/life_watch/79c88ac2c8571d0255750c59.jpg",
+        "width": "63"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "84",
+        "image_id": "8B5C4EA1-D15F-4482-8525-E8B27ECA3D3C",
+        "label": "Dinoflagellata",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellata/ecotaxa_Dinoflagellata_8B5C4EA1-D15F-4482-8525-E8B27ECA3D3C.jpg",
+        "thumbnail_url": "/images/life_watch/867ec0d5eb152ab1d5e927b3.jpg",
+        "width": "133"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "76",
+        "image_id": "74C510CE-95E6-4788-A3EE-BB5506DBF845",
+        "label": "Dinoflagellata",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellata/ecotaxa_Dinoflagellata_74C510CE-95E6-4788-A3EE-BB5506DBF845.jpg",
+        "thumbnail_url": "/images/life_watch/5187d0ea6ad824baad3b60b4.jpg",
+        "width": "69"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "49",
+        "image_id": "B16D4CD0-8293-483A-9025-49B898CCC4CA",
+        "label": "Dinoflagellata",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellata/ecotaxa_Dinoflagellata_B16D4CD0-8293-483A-9025-49B898CCC4CA.jpg",
+        "thumbnail_url": "/images/life_watch/6e24f8a23bb8dcc38d752d81.jpg",
+        "width": "62"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "68",
+        "image_id": "719BEBB1-01DC-43D9-83DD-651A666ECBF1",
+        "label": "Dinoflagellata",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellata/ecotaxa_Dinoflagellata_719BEBB1-01DC-43D9-83DD-651A666ECBF1.jpg",
+        "thumbnail_url": "/images/life_watch/16a9d7fc6afc630f9267e1fa.jpg",
+        "width": "49"
+      }
+    ],
+    "taxonomic_mismatch::dinoflagellate cyst": [
+      {
+        "dataset_id": "life_watch",
+        "height": "77",
+        "image_id": "2F175597-5436-499B-8C83-F4639FC119F9",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_2F175597-5436-499B-8C83-F4639FC119F9.jpg",
+        "thumbnail_url": "/images/life_watch/dd09b82e7ed5bcfba161c1eb.jpg",
+        "width": "71"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "90",
+        "image_id": "44D9841B-1DC1-4D49-992F-2CDD398A15A6",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_44D9841B-1DC1-4D49-992F-2CDD398A15A6.jpg",
+        "thumbnail_url": "/images/life_watch/1631e7fc36ac4c1587e0d11b.jpg",
+        "width": "29"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "133",
+        "image_id": "CAC19DD3-11C3-4151-8046-5169713CEE19",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_CAC19DD3-11C3-4151-8046-5169713CEE19.jpg",
+        "thumbnail_url": "/images/life_watch/491eca5a7aea6547fd2e3881.jpg",
+        "width": "86"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "85",
+        "image_id": "6217FC9B-02C8-411C-BE52-993C5AFB87F3",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_6217FC9B-02C8-411C-BE52-993C5AFB87F3.jpg",
+        "thumbnail_url": "/images/life_watch/c33ad2e5d28a3c8ec661ccda.jpg",
+        "width": "84"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "64",
+        "image_id": "D9F00C1E-3467-46E8-B37B-1B9A6A3166D6",
+        "label": "Dinoflagellate_cyst",
+        "source_ref": "datasets/LifeWatch/data/images/Dinoflagellate_cyst/ecotaxa_Dinoflagellate_cyst_D9F00C1E-3467-46E8-B37B-1B9A6A3166D6.jpg",
+        "thumbnail_url": "/images/life_watch/43dacf5e70bd94f324c4dc6c.jpg",
+        "width": "94"
+      }
+    ],
+    "taxonomic_mismatch::rhabdosphaera clavigera": [
+      {
+        "dataset_id": "medplanktonset",
+        "height": "74",
+        "image_id": "D20221124T125201_IFCB181_00457",
+        "label": "Rhabdosphaera_clavigera",
+        "source_ref": "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20221124T125201_IFCB181_00457.png",
+        "thumbnail_url": "/images/medplanktonset/86afeb17960808b502af6d58.jpg",
+        "width": "96"
+      },
+      {
+        "dataset_id": "medplanktonset",
+        "height": "68",
+        "image_id": "D20240411T122003_IFCB181_01967",
+        "label": "Rhabdosphaera_clavigera",
+        "source_ref": "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20240411T122003_IFCB181_01967.png",
+        "thumbnail_url": "/images/medplanktonset/3b21c5b7948389dede2ce903.jpg",
+        "width": "96"
+      },
+      {
+        "dataset_id": "medplanktonset",
+        "height": "68",
+        "image_id": "D20240422T135901_IFCB181_06702",
+        "label": "Rhabdosphaera_clavigera",
+        "source_ref": "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20240422T135901_IFCB181_06702.png",
+        "thumbnail_url": "/images/medplanktonset/0f52878113c88ddf8e518e18.jpg",
+        "width": "96"
+      },
+      {
+        "dataset_id": "medplanktonset",
+        "height": "76",
+        "image_id": "D20250203T154534_IFCB181_00627",
+        "label": "Rhabdosphaera_clavigera",
+        "source_ref": "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20250203T154534_IFCB181_00627.png",
+        "thumbnail_url": "/images/medplanktonset/4e3333ded5d00f73f153b834.jpg",
+        "width": "136"
+      },
+      {
+        "dataset_id": "medplanktonset",
+        "height": "68",
+        "image_id": "D20250225T061932_IFCB181_00609",
+        "label": "Rhabdosphaera_clavigera",
+        "source_ref": "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20250225T061932_IFCB181_00609.png",
+        "thumbnail_url": "/images/medplanktonset/0a75fec20b6808651f06080b.jpg",
+        "width": "136"
+      }
+    ],
+    "taxonomic_mismatch::tintinnina": [
+      {
+        "dataset_id": "life_watch",
+        "height": "110",
+        "image_id": "13511075-8144-4D7D-94AB-0407EBF49287",
+        "label": "Tintinnina",
+        "source_ref": "datasets/LifeWatch/data/images/Tintinnina/ecotaxa_Tintinnina_13511075-8144-4D7D-94AB-0407EBF49287.jpg",
+        "thumbnail_url": "/images/life_watch/8c188e3ea0b6334afbf2b274.jpg",
+        "width": "74"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "111",
+        "image_id": "DAF4EB33-52A0-4C6B-A5A5-167F85C0D7F7",
+        "label": "Tintinnina",
+        "source_ref": "datasets/LifeWatch/data/images/Tintinnina/ecotaxa_Tintinnina_DAF4EB33-52A0-4C6B-A5A5-167F85C0D7F7.jpg",
+        "thumbnail_url": "/images/life_watch/2e18c2e21d01c0ab967ba9f2.jpg",
+        "width": "51"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "121",
+        "image_id": "A51CC4CF-C84F-48AB-A540-837B57A5C3AF",
+        "label": "Tintinnina",
+        "source_ref": "datasets/LifeWatch/data/images/Tintinnina/ecotaxa_Tintinnina_A51CC4CF-C84F-48AB-A540-837B57A5C3AF.jpg",
+        "thumbnail_url": "/images/life_watch/f73a492d8db1e3821be1b3f0.jpg",
+        "width": "61"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "107",
+        "image_id": "BFC2DB81-0629-4DBB-A765-5F10E977F201",
+        "label": "Tintinnina",
+        "source_ref": "datasets/LifeWatch/data/images/Tintinnina/ecotaxa_Tintinnina_BFC2DB81-0629-4DBB-A765-5F10E977F201.jpg",
+        "thumbnail_url": "/images/life_watch/a21fc91bc3e6d94e49ac6659.jpg",
+        "width": "51"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "110",
+        "image_id": "8D368118-DDCD-4D1C-9B70-AC67161B7D7D",
+        "label": "Tintinnina",
+        "source_ref": "datasets/LifeWatch/data/images/Tintinnina/ecotaxa_Tintinnina_8D368118-DDCD-4D1C-9B70-AC67161B7D7D.jpg",
+        "thumbnail_url": "/images/life_watch/4f36ec88b8f16f74e37c4d3f.jpg",
+        "width": "42"
+      }
+    ],
+    "taxonomic_mismatch::veliger larvae d-shaped": [
+      {
+        "dataset_id": "life_watch",
+        "height": "78",
+        "image_id": "EAE7102E-5A12-4F07-830C-A0D26D7CBB3A",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_EAE7102E-5A12-4F07-830C-A0D26D7CBB3A.jpg",
+        "thumbnail_url": "/images/life_watch/5a0dfe63c0fa93633694d450.jpg",
+        "width": "84"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "66",
+        "image_id": "A36581ED-3F56-4CF9-9995-9CC387268DB1",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_A36581ED-3F56-4CF9-9995-9CC387268DB1.jpg",
+        "thumbnail_url": "/images/life_watch/c626b1bbeab87e605ed43e47.jpg",
+        "width": "59"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "94",
+        "image_id": "6650BBD6-DDA7-46B4-B6FF-1552626A4FBD",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_6650BBD6-DDA7-46B4-B6FF-1552626A4FBD.jpg",
+        "thumbnail_url": "/images/life_watch/505decad49410bc254c02a8f.jpg",
+        "width": "86"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "84",
+        "image_id": "260AC09B-2B90-45FE-BE63-E87C3E46A9E3",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_260AC09B-2B90-45FE-BE63-E87C3E46A9E3.jpg",
+        "thumbnail_url": "/images/life_watch/efb94c1183827f7b054045dc.jpg",
+        "width": "78"
+      },
+      {
+        "dataset_id": "life_watch",
+        "height": "88",
+        "image_id": "2893FF6E-2021-45C7-A8C1-B36A9BBFA558",
+        "label": "Veliger_larvae_D-shaped",
+        "source_ref": "datasets/LifeWatch/data/images/Veliger_larvae_D-shaped/ecotaxa_Veliger_larvae_D-shaped_2893FF6E-2021-45C7-A8C1-B36A9BBFA558.jpg",
+        "thumbnail_url": "/images/life_watch/9eeec6de6bd0861c50ba6023.jpg",
+        "width": "91"
       }
     ]
   },
   "summary": {
-    "source": "synthetic fixtures only",
-    "sample_limit_per_dataset": 8,
+    "evidence_table_total_group_count": 22,
+    "evidence_table_total_image_count": 86033,
     "excluded_valid_tree_overlap_default": false,
+    "sample_limit_per_dataset": 5,
+    "source": "Frozen reviewed LifeWatch and MedPlanktonSet subset",
     "table_counts": {
-      "non_taxonomic_category": 1,
-      "taxonomic_mismatch": 1
-    },
-    "table_image_counts": {
-      "non_taxonomic_category": 4,
+      "non_taxonomic_category": 14,
       "taxonomic_mismatch": 8
     },
-    "evidence_table_total_group_count": 2,
-    "evidence_table_total_image_count": 12,
-    "unique_group_count": 2,
-    "total_image_count": 12,
-    "total_image_count_semantics": "unique_dataset_invalid_group_image_union"
+    "table_image_counts": {
+      "non_taxonomic_category": 72176,
+      "taxonomic_mismatch": 13857
+    },
+    "total_image_count": 75438,
+    "total_image_count_semantics": "unique_dataset_invalid_group_image_union",
+    "unique_group_count": 18
+  },
+  "tables": {
+    "non_taxonomic_category": [
+      {
+        "aliases": [
+          "Artefact"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Artefact"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8800,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8800,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Artefact",
+              "Strict rule: label contains non-taxonomic, grouped, or temporary-category markers"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Artefact?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "artefact",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8800,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_002",
+        "sample_key": "non_taxonomic_category::artefact",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8800,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Bellerochea_horologicalis"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Bellerochea_horologicalis"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 726,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 726,
+            "invalid_reason_count": 1,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Aggregate, Bellerochea, Remnant, Unknown"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 726,
+            "valid_tree_entry": "yes",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1066",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=148899",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=447730"
+            ]
+          }
+        ],
+        "group_key": "bellerochea horologicalis",
+        "include_valid_tree_overlap": true,
+        "invalid_image_count": 726,
+        "invalid_reason_count": 1,
+        "pseudo_aphia_id": "inv_001",
+        "sample_key": "non_taxonomic_category::bellerochea horologicalis",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 726,
+        "valid_image_count": 726
+      },
+      {
+        "aliases": [
+          "Bubbles"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Bubbles"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 5360,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 5360,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Bubbles",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Bubbles?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "bubble",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 5360,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_007",
+        "sample_key": "non_taxonomic_category::bubble",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 5360,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Crustaceae-part"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Crustaceae-part"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8797,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8797,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Crustaceae:part",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1066",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Crustaceae%20part?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "crustaceae-part",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8797,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "inv_003",
+        "sample_key": "non_taxonomic_category::crustaceae-part",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8797,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Detritus"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Detritus"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8798,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8798,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Detritus",
+              "Strict rule: label contains non-taxonomic, grouped, or temporary-category markers"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Detritus?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "detritus",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8798,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_082",
+        "sample_key": "non_taxonomic_category::detritus",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8798,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Dinoflagellate_cyst"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Dinoflagellate_cyst"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 587,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 587,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Dinoflagellate cyst",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=146203",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Dinoflagellate%20cyst?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "dinoflagellate cyst",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 587,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "inv_005",
+        "sample_key": "non_taxonomic_category::dinoflagellate cyst",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 587,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Egg+Cyst"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Egg+Cyst"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8797,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8797,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Egg/Cyst",
+              "Strict rule: label contains non-taxonomic, grouped, or temporary-category markers"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Egg/Cyst?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "egg/cyst",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8797,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_028",
+        "sample_key": "non_taxonomic_category::egg/cyst",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8797,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Faecal_pellet"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Faecal_pellet"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 2079,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 2079,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Faecal pellet",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Faecal%20pellet?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "faecal pellet",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 2079,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_030",
+        "sample_key": "non_taxonomic_category::faecal pellet",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 2079,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Fibers"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Fibers"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8800,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8800,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Fibers",
+              "Strict rule: label contains non-taxonomic, grouped, or temporary-category markers"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Fibers?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "fiber",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8800,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_032",
+        "sample_key": "non_taxonomic_category::fiber",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8800,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Phytoplankton_Colony"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Phytoplankton_Colony"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8800,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8800,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Phytoplankton Colony",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Phytoplankton%20Colony?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "phytoplankton colony",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8800,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_060",
+        "sample_key": "non_taxonomic_category::phytoplankton colony",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8800,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Pollen"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Pollen"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 301,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 301,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Pollen",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Pollen?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "pollen",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 301,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_063",
+        "sample_key": "non_taxonomic_category::pollen",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 301,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Remnant"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Remnant"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8800,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8800,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Remnant",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Remnant?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "remnant",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8800,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_065",
+        "sample_key": "non_taxonomic_category::remnant",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 8800,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Veliger_larvae_D-shaped"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Veliger_larvae_D-shaped"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 485,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 485,
+            "invalid_reason_count": 1,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=51",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Veliger%20larvae%20D%20shaped?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "veliger larvae d-shaped",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 485,
+        "invalid_reason_count": 1,
+        "pseudo_aphia_id": "inv_018",
+        "sample_key": "non_taxonomic_category::veliger larvae d-shaped",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 485,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Zooplankton"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Zooplankton"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 1046,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 1046,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Zooplankton",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Zooplankton?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "zooplankton",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 1046,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "ntc_081",
+        "sample_key": "non_taxonomic_category::zooplankton",
+        "status": "Non-Taxonomic Category",
+        "total_image_count": 1046,
+        "valid_image_count": 0
+      }
+    ],
+    "taxonomic_mismatch": [
+      {
+        "aliases": [
+          "Bellerochea_horologicalis"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Bellerochea_horologicalis"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 726,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 726,
+            "invalid_reason_count": 3,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 1066 resolves to 'Crustacea', not label 'Bellerochea_horologicalis'",
+              "AphiaID 148899 resolves to 'Bacillariophyceae', not label 'Bellerochea_horologicalis'",
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Aggregate, Bellerochea, Remnant, Unknown"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 726,
+            "valid_tree_entry": "yes",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1066",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=148899",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=447730"
+            ]
+          }
+        ],
+        "group_key": "bellerochea horologicalis",
+        "include_valid_tree_overlap": true,
+        "invalid_image_count": 726,
+        "invalid_reason_count": 3,
+        "pseudo_aphia_id": "inv_001",
+        "sample_key": "taxonomic_mismatch::bellerochea horologicalis",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 726,
+        "valid_image_count": 726
+      },
+      {
+        "aliases": [
+          "Copepod_eggs"
+        ],
+        "dataset_ids": [
+          "medplanktonset"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Copepod_eggs"
+            ],
+            "dataset_id": "medplanktonset",
+            "doi": "10.5281/zenodo.15471023",
+            "image_count": 1,
+            "instrument": "IFCB",
+            "invalid_image_count": 1,
+            "invalid_reason_count": 1,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "invalid"
+            ],
+            "source_examples": [
+              "IFCB_images.zip::IFCB_images/Copepod_eggs/D20240506T175238_IFCB181_01115.png"
+            ],
+            "source_url": "https://zenodo.org/records/15471023",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Copepod%20eggs?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "copepod eggs",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 1,
+        "invalid_reason_count": 1,
+        "pseudo_aphia_id": "tm_015",
+        "sample_key": "taxonomic_mismatch::copepod eggs",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 1,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Crustaceae-part"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Crustaceae-part"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 8797,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 8797,
+            "invalid_reason_count": 3,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 1066 resolves to 'Crustacea', not label 'Crustaceae-part'",
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Crustaceae:part",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=1066",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Crustaceae%20part?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "crustaceae-part",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 8797,
+        "invalid_reason_count": 3,
+        "pseudo_aphia_id": "inv_003",
+        "sample_key": "taxonomic_mismatch::crustaceae-part",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 8797,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Dinoflagellata"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Dinoflagellata"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 2643,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 2643,
+            "invalid_reason_count": 5,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 109392 resolves to 'Gymnodiniales', not label 'Dinoflagellata'",
+              "AphiaID 109462 resolves to 'Dinophysis', not label 'Dinoflagellata'",
+              "AphiaID 109464 resolves to 'Ornithocercus', not label 'Dinoflagellata'",
+              "AphiaID 110325 resolves to 'Dissodinium pseudolunula', not label 'Dinoflagellata'",
+              "AphiaID 232546 resolves to 'Akashiwo sanguinea', not label 'Dinoflagellata'"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 2643,
+            "valid_tree_entry": "yes",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=109392",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=109462",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=109464",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=110325",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=146203",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=232546"
+            ]
+          }
+        ],
+        "group_key": "dinoflagellata",
+        "include_valid_tree_overlap": true,
+        "invalid_image_count": 2643,
+        "invalid_reason_count": 5,
+        "pseudo_aphia_id": "tm_004",
+        "sample_key": "taxonomic_mismatch::dinoflagellata",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 2643,
+        "valid_image_count": 2643
+      },
+      {
+        "aliases": [
+          "Dinoflagellate_cyst"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Dinoflagellate_cyst"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 587,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 587,
+            "invalid_reason_count": 3,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 146203 resolves to 'Dinoflagellata', not label 'Dinoflagellate_cyst'",
+              "Local AphiaID source contains non-numeric/non-AphiaID values: Dinoflagellate cyst",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=146203",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Dinoflagellate%20cyst?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "dinoflagellate cyst",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 587,
+        "invalid_reason_count": 3,
+        "pseudo_aphia_id": "inv_005",
+        "sample_key": "taxonomic_mismatch::dinoflagellate cyst",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 587,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Rhabdosphaera_clavigera"
+        ],
+        "dataset_ids": [
+          "medplanktonset"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Rhabdosphaera_clavigera"
+            ],
+            "dataset_id": "medplanktonset",
+            "doi": "10.5281/zenodo.15471023",
+            "image_count": 146,
+            "instrument": "IFCB",
+            "invalid_image_count": 146,
+            "invalid_reason_count": 1,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "\u5316\u77f3\uff0c\u5148\u653e\u5230 invalid \u597d\u4e86"
+            ],
+            "source_examples": [
+              " IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20221124T150031_IFCB181_00769.png ",
+              " IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20221125T120835_IFCB181_00557.png",
+              "IFCB_images.zip::IFCB_images/Rhabdosphaera_clavigera/D20221124T125201_IFCB181_00457.png "
+            ],
+            "source_url": "https://zenodo.org/records/15471023",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Rhabdosphaera%20clavigera?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "rhabdosphaera clavigera",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 146,
+        "invalid_reason_count": 1,
+        "pseudo_aphia_id": "tm_036",
+        "sample_key": "taxonomic_mismatch::rhabdosphaera clavigera",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 146,
+        "valid_image_count": 0
+      },
+      {
+        "aliases": [
+          "Tintinnina"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Tintinnina"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 472,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 472,
+            "invalid_reason_count": 7,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 101190 resolves to 'Laboea', not label 'Tintinnina'",
+              "AphiaID 101195 resolves to 'Strombidium', not label 'Tintinnina'",
+              "AphiaID 172434 resolves to 'Helicostomella', not label 'Tintinnina'",
+              "AphiaID 183543 resolves to 'Eutintinnus', not label 'Tintinnina'",
+              "AphiaID 183574 resolves to 'Xystonella', not label 'Tintinnina'",
+              "AphiaID 204197 resolves to 'Codonellopsis', not label 'Tintinnina'",
+              "AphiaID 425527 resolves to 'Amphorellopsis', not label 'Tintinnina'"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 472,
+            "valid_tree_entry": "yes",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=101190",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=101195",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=172434",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=183543",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=183574",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=204197",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=425527",
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=732976"
+            ]
+          }
+        ],
+        "group_key": "tintinnina",
+        "include_valid_tree_overlap": true,
+        "invalid_image_count": 472,
+        "invalid_reason_count": 7,
+        "pseudo_aphia_id": "tm_008",
+        "sample_key": "taxonomic_mismatch::tintinnina",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 472,
+        "valid_image_count": 472
+      },
+      {
+        "aliases": [
+          "Veliger_larvae_D-shaped"
+        ],
+        "dataset_ids": [
+          "life_watch"
+        ],
+        "datasets": [
+          {
+            "aliases": [
+              "Veliger_larvae_D-shaped"
+            ],
+            "dataset_id": "life_watch",
+            "doi": "10.5281/zenodo.16679297",
+            "image_count": 485,
+            "instrument": "FlowCAM",
+            "invalid_image_count": 485,
+            "invalid_reason_count": 2,
+            "license": "CC-BY-4.0",
+            "license_status": "confirmed_source_metadata",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "reasons": [
+              "AphiaID 51 resolves to 'Mollusca', not label 'Veliger_larvae_D-shaped'",
+              "No local AphiaID and no exact WoRMS name match under strict validation"
+            ],
+            "source_examples": [
+              "datasets/LifeWatch/metadata/metadata_trainingset_dedup_by_image_path.csv"
+            ],
+            "source_url": "https://zenodo.org/records/16679297",
+            "valid_image_count": 0,
+            "valid_tree_entry": "no",
+            "worms_sources": [
+              "https://www.marinespecies.org/aphia.php?p=taxdetails&id=51",
+              "https://www.marinespecies.org/rest/AphiaRecordsByName/Veliger%20larvae%20D%20shaped?like=false&marine_only=false"
+            ]
+          }
+        ],
+        "group_key": "veliger larvae d-shaped",
+        "include_valid_tree_overlap": false,
+        "invalid_image_count": 485,
+        "invalid_reason_count": 2,
+        "pseudo_aphia_id": "inv_018",
+        "sample_key": "taxonomic_mismatch::veliger larvae d-shaped",
+        "status": "Taxonomic Mismatch",
+        "total_image_count": 485,
+        "valid_image_count": 0
+      }
+    ]
   }
 }

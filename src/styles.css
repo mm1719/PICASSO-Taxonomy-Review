@@ -195,4 +195,9 @@ tbody tr:hover { background: #f8faf7; }
   .summary-grid { grid-template-columns: repeat(2, minmax(92px, 1fr)); }
 }
 
-.synthetic-notice { background: #fef3c7; color: #78350f; border-bottom: 1px solid #fcd34d; padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 600; }
+.publication-notice { background: #eef8f2; color: #215d3c; border-bottom: 1px solid #b8ddc7; padding: 0.75rem 1.25rem; font-size: 0.875rem; }
+.publication-notice button { border: 0; background: transparent; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; }
+.sample-credits { margin-bottom: 16px; font-size: 13px; overflow-wrap: anywhere; }
+.sample-credits p + p { margin-top: 6px; }
+.mapping-scope { margin: 0 14px 14px; font-size: 13px; overflow-wrap: anywhere; }
+.reference-label { display: block; font-weight: normal; color: #526071; }

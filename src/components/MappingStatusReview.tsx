@@ -338,6 +338,8 @@ export function MappingStatusReview({ data }: Props) {
           </div>
         </div>
 
+        {data.scope_note && <p className="mapping-scope">{data.scope_note}</p>}
+
         <datalist id="mapping-target-ids">
           {data.targets.map((target) => (
             <option key={target.source_id} value={target.source_id}>
@@ -394,7 +396,10 @@ export function MappingStatusReview({ data }: Props) {
                       />
                     ) : row.target_id ? <code>{row.target_id}</code> : ""}
                   </td>
-                  <td className="wrap-cell strong-cell">{row.source_alias}</td>
+                  <td className="wrap-cell strong-cell">
+                    {row.source_alias}
+                    {targetsById.get(row.source_id)?.reference_only && <small className="reference-label">Reference only</small>}
+                  </td>
                   <td className={row.validation_status !== "ok" ? "error-text wrap-cell" : "wrap-cell"}>
                     {row.validation_status === "ok" ? row.target_alias : row.validation_message}
                   </td>
@@ -427,6 +432,7 @@ export function MappingStatusReview({ data }: Props) {
               <X size={18} />
             </button>
           </div>
+          {selectedTarget?.reference_only && <p className="muted">Historical destination only. No source images or additional dataset are included for this target.</p>}
           <dl className="kv">
             <div><dt>Source ID</dt><dd><code>{selectedRow.source_id}</code></dd></div>
             <div><dt>Action</dt><dd>{selectedRow.action}</dd></div>

@@ -2,11 +2,11 @@
 
 ## Source selection
 
-The application source and locked dependencies were copied from a fixed committed version of the existing taxonomy-review app into a separate staging directory. The original working trees and all original data remained untouched. No original Git history, agent instructions, internal decision logs, generator paths into research storage or original public artifacts are included.
+The application source and locked dependencies were copied from a fixed committed version of the existing taxonomy-review app into a separate repository. The original working trees and data remain untouched. No original Git history, agent instructions, internal decision logs, credentials, full manifests or model weights are bundled.
 
-The original app has no project-wide LICENSE file. The owner explicitly confirmed permission to publish the Phase 3 website code with synthetic demo data. That scope does not include the separate data-acquisition or integration pipeline, original datasets, or model weights. No reuse license has been selected or granted for this project's own code.
+The original app has no project-wide LICENSE file. Initial authorization covered website code and synthetic data; on 2026-11-15 the owner additionally approved a real subset of LifeWatch and MedPlanktonSet, at most five images per source label. No reuse license has been selected or granted for this project's own code. The two datasets retain their independent licenses below.
 
-## Deliberate candidate changes
+## Initial synthetic release (historical)
 
 - Removed every original runtime public artifact and all 8,211 source thumbnails.
 - Added a deterministic standalone generator for invented fixtures and plain SVG diagrams.
@@ -23,10 +23,29 @@ The installed direct package license texts checked during preparation identify R
 
 ## Data and disclosure
 
-The source candidate contains no downloaded biological images, API cache, contact metadata, model artifact, research manifest or real experiment output. The synthetic diagrams do not embed remote links, scripts, raster images or font files. No conclusion is drawn here about rights to redistribute the original datasets or any trained model.
+The synthetic runtime fixtures have now been replaced by the approved real subset. No other dataset's image cohort, full API cache, contact metadata, model artifact or training manifest is included. Provider names in legacy tests or terminology examples do not imply that their data are published here.
+
+### Image sources
+
+- **LifeWatch**: Wout Decrop, Rune Lagaisse, Jonas Mortelmans, Julie Muyle, Luz Amadei Martinez and Klaas Deneudt (VLIZ), *LifeWatch observatory data: phytoplankton annotated trainingset by FlowCam imaging in the Belgian Part of the North Sea*. [Zenodo record](https://zenodo.org/records/16679297), DOI `10.5281/zenodo.16679297`, published 2025-08-05. **475 thumbnails**.
+- **MedPlanktonSet**: creators as listed by the deposit, Mente MS & Houliez E; Scalco E.; Roselli L.; Sarno D. (Stazione Zoologica Anton Dohrn), *MedPlanktonSet - A dataset of labeled IFCB images from the Mediterranean Sea*. [Zenodo record](https://zenodo.org/records/15471023), DOI `10.5281/zenodo.15471023`, published 2025-06-05. **608 thumbnails**.
+
+Both official Zenodo record APIs identified **CC BY 4.0** when checked 2026-11-15. [License terms](https://creativecommons.org/licenses/by/4.0/) permit redistribution/adaptation with attribution, a license link and an indication of changes. These data terms do not license the project's own code, remove other rights, or imply endorsement.
+
+Changes: selected from QC/EDA-eligible records; the research pipeline had resized and JPEG-encoded these review thumbnails. This exporter copies those JPEG bytes unchanged. Source labels are retained separately from project-reviewed taxonomy/risk/mapping decisions. The five-image budget is shared across routes and label aliases, keyed by dataset and original label. Each image has a source reference, DOI, quality gate and SHA-256 in [`image_attributions.csv`](../public/data/image_attributions.csv). Creator names and license links are also displayed in the website and thumbnail view.
+
+### Taxonomy and mapping
+
+WoRMS Editorial Board (2026). *World Register of Marine Species*. Available from [WoRMS at VLIZ](https://www.marinespecies.org), DOI `10.14284/170`. [Provider terms](https://www.marinespecies.org/about.php) were checked 2026-11-15. Only the limited, previously reviewed lineage/name/status facts for the selected subset are retained; this is not the complete WoRMS database and includes no WoRMS images. The underlying taxonomy records were not refreshed for this publication.
+
+Retained external name/status evidence credits **AlgaeBase** (Guiry & Guiry, University of Galway), accessed through **Global Names Verifier**, and **Catalogue of Life**, with record links in the drawers. No provider descriptions, imagery or raw response caches are included or relicensed. These short factual references support historical project decisions; they are not a claim that every provider agrees or that source labels have been independently revalidated today.
+
+Existing LifeWatch mapping histories are preserved. MedPlanktonSet has no formal mapping history and receives no invented keep decisions. Historical destinations `ntc_031` and `ntc_053` remain reference-only IDs with zero images, preserving merge closure without importing their original datasets. Retained candidate rows, leaf placements and lineage records are identical to the selected original records; ancestor and table summaries are restricted to the approved subset.
+
+The snapshot metadata records ten read-only source-input hashes and hashes for all public artifacts. Original absolute paths are not published. Counts refer to frozen reviewed cohorts, not the 1,083 redistributed thumbnails. Invalid review evidence is not necessarily ML-ready, and overlapping review tables must not be added together.
 
 ## Remaining review
 
-On 2026-11-15, the owner separately authorized an independent Vercel deployment of this synthetic showcase, connected only to `mm1719/PICASSO-Taxonomy-Review`. The [public demo](https://picasso-taxonomy-review.vercel.app) does not replace the original Phase 3 website or distribute its research data. This authorization does not grant a reuse license for the project code.
+The independent Vercel deployment is connected only to `mm1719/PICASSO-Taxonomy-Review`. The [public site](https://picasso-taxonomy-review.vercel.app) does not replace or synchronize with the original Phase 3 website. Its redistribution is limited to the approved subset above. This authorization does not grant a reuse license for the project code.
 
-Complete real-browser visual/accessibility QA before treating this as a polished public demo. Any future grant of a reuse license, data acquisition or research-data distribution requires its own scoped decision. These checks are separate from passing unit tests and HTTP deployment checks.
+Complete real-browser visual/accessibility QA before treating this as a polished public demo. Any future code-license grant or expansion beyond this dataset scope requires its own decision. These checks are separate from passing unit tests and HTTP deployment checks.

@@ -1,6 +1,34 @@
 # Validation record
 
-Prepared 2026-11-14 for the isolated synthetic dashboard candidate. The original research application and data were not modified.
+## Active change: licensed dataset subset (2026-11-15)
+
+Owner-approved scope: publish only LifeWatch and MedPlanktonSet, at most five distinct images per dataset/source label across all views, preserving reviewed lineage, risk flags and stable mapping IDs. Original Phase 3 inputs are read-only. Mapping history covers LifeWatch only; MedPlanktonSet has no formal mapping history and must not acquire invented keep decisions. Historical merge destinations outside LifeWatch may appear as zero-image reference targets, without other datasets' images or counts.
+
+- [x] Inspect source schemas, current manifests and source licenses.
+- [x] Export the filtered tree/candidates, invalid evidence, mapping and QC-gated thumbnails.
+- [x] Add visible attribution, snapshot/count semantics and mapping scope.
+- [x] Verify data contracts, publication guardrails, UI/CSV regression tests and build.
+- [ ] Push the independent repository and verify its production deployment; recheck original inputs unchanged.
+
+Acceptance: only the two approved image sources; traceable source and thumbnail hashes; no private paths or unexpected public files; identical retained taxonomy placements/risk flags; closed mapping references; no more than five images per source label; explicit distinction between reviewed cohort counts and displayed thumbnails.
+
+### Subset verification
+
+- Published payload: 219 valid entries (82 LifeWatch, 137 MedPlanktonSet), 222 placements, 171 selected lineages; 1,083 JPEG thumbnails across 234 original source labels. LifeWatch has 475 thumbnails, MedPlanktonSet 608. All routes share the five-per-label budget.
+- Read-only comparison against source: every retained candidate field, leaf placement and ancestor path, lineage record, and mapping-history row is unchanged. All ten source-input hashes match after export. Summary counts alone are restricted/recomputed for the selected datasets.
+- Mapping: 80 LifeWatch cohort targets covering 337,032 accepted images, plus two zero-image reference-only destinations. Two historical snapshots remain closed over stable IDs. MedPlanktonSet has no formal history and no fabricated keep rows.
+- Image checks: all 1,083 JPEGs fully decoded with Pillow and have no EXIF; copies are hash-identical to the selected original review thumbnails. 1,077 have current-manifest membership; six MedPlanktonSet invalid examples independently pass read QC, EDA and exact-dedup gating. One stale LifeWatch example was excluded.
+- `npm run coverage`: **82 frontend tests passed in 10 files**, including actual-snapshot route/attribution checks and a real-ID CSV export/import round trip with rejected-import and changed-draft protection. Configured frontend coverage: statements **94.07% (714/759)**, branches **81.76% (650/795)**, functions **93.96% (296/315)**, lines **94.36% (620/657)**. Not a Python/root-repository coverage claim.
+- `npm run test:fixtures`: **15 passed**, including shared cross-route sample budgets, immutable leaf pruning, historical-target closure, QC threshold boundaries, missing metrics, exact dedup, original-output isolation, hashes, missing/extra assets, symlinks, private paths, and rehashed semantic violations.
+- `npm run build`: passed the offline publication guard, TypeScript, Vite build and **2 license-notice tests**. `npm audit --json`: **0 vulnerabilities**. `git diff --check`: passed. No dependency versions changed; only the old synthetic package name was renamed.
+- React changes use existing components and one small static publication JSON import, without extra API calls, browser storage or new dependencies. Existing CSV semantics remain unchanged.
+- Original root status still has only the two pre-existing EcoTaxa cache changes; the original demo submodule remains clean on its original branch. No original generator or report-writing QC command was run.
+
+Remaining limit: the connected browser host still reports unavailable (rechecked 2026-11-15). jsdom and HTTP checks are not visual, native-download or cross-browser acceptance. An alternate browser was not installed, in accordance with the owner's earlier instruction. Taxonomy and QC decisions were reused, not rerun as a new scientific review.
+
+## Historical baseline
+
+The sections below are dated checkpoints, not descriptions of the current runtime data. Prepared 2026-11-14 for the isolated synthetic dashboard candidate. The original research application and data were not modified.
 
 ## Completed
 

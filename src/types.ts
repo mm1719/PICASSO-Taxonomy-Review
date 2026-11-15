@@ -161,6 +161,7 @@ export type InvalidLabelData = {
 };
 
 export type MappingTarget = {
+  reference_only?: boolean;
   source_id: string;
   source_alias: string;
   image_count: number;
@@ -197,6 +198,7 @@ export type MappingHistory = {
 };
 
 export type MappingStatusData = {
+  scope_note?: string;
   generated_at_utc: string;
   source_targets: string;
   history_dir: string;

@@ -107,12 +107,12 @@ export function InvalidDetailDrawer({ group, samples, onClose, onOpenSamples }: 
       ))}
 
       <div className="drawer-section">
-        <button className="primary-button" onClick={() => onOpenSamples(group.sample_key)}>
+        <button className="primary-button" disabled={samples.length === 0} onClick={() => onOpenSamples(group.sample_key)}>
           <Images size={16} />
-          Open {samples.length || 8} sample thumbnails
+          Open {samples.length} sample thumbnails
         </button>
         <p className="muted">
-          Samples are drawn from analysis-ready manifests and keep relative source references.
+          QC/EDA-eligible review evidence with relative source references; inclusion here does not imply a valid ML-ready label.
         </p>
       </div>
     </aside>

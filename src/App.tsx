@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { HelpCircle, Search, SlidersHorizontal } from "lucide-react";
 import { DetailDrawer } from "./components/DetailDrawer";
 import { HelpModal } from "./components/HelpModal";
+import publication from "../public/data/publication.json";
 import { InstrumentDatasetFilters } from "./components/InstrumentDatasetFilters";
 import { InvalidDetailDrawer } from "./components/InvalidDetailDrawer";
 import { InvalidLabelsReview } from "./components/InvalidLabelsReview";
@@ -228,11 +229,15 @@ function App() {
 
   return (
     <div className="app-shell">
-      <div role="note" className="synthetic-notice">Synthetic demo: names, identifiers, counts and diagrams are invented for UI demonstration, not scientific records.</div>
+      <div role="note" className="publication-notice">
+        LifeWatch + MedPlanktonSet: licensed real-data subset, up to {publication.sample_limit_per_label} images per source label.
+        {" "}Counts describe source cohorts, not the displayed thumbnails.
+        {" "}<button className="link" onClick={() => setHelpOpen(true)}>Sources and licenses</button>
+      </div>
       <div className={sampleCandidate || invalidSampleGroup ? "taxonomy-view hidden-view" : "taxonomy-view"}>
         <header className="topbar">
           <div>
-            <p className="eyebrow">Synthetic demonstration • no research data</p>
+            <p className="eyebrow">Reviewed taxonomy snapshot</p>
             <h1>Taxonomy Integration Review</h1>
           </div>
           <nav className="topnav" aria-label="Review sections">
@@ -475,7 +480,7 @@ function App() {
       {invalidSampleKey && invalidSampleGroup && (
         <SamplePage
           title={invalidSampleGroup.aliases.join(" / ")}
-          subtitle={`${invalidSampleGroup.status} · ${invalidSampleGroup.total_image_count.toLocaleString()} images · showing up to ${data.invalid.summary.sample_limit_per_dataset} thumbnails per dataset`}
+          subtitle={`${invalidSampleGroup.status} · ${invalidSampleGroup.total_image_count.toLocaleString()} source images · up to ${publication.sample_limit_per_label} thumbnails per source label across all views`}
           backLabel="Back to invalid labels"
           samples={data.invalid.samples[invalidSampleKey] ?? []}
           onBack={() => setInvalidSampleKey(null)}

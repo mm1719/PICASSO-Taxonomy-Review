@@ -333,9 +333,9 @@ export function DetailDrawer({
 
       {candidate && (
         <div className="drawer-section">
-          <button className="primary-button" onClick={() => onOpenSamples(candidate.entry_id)}>
+          <button className="primary-button" disabled={samples.length === 0} onClick={() => onOpenSamples(candidate.entry_id)}>
             <Images size={16} />
-            Open {samples.length || 10} sample thumbnails
+            Open {samples.length} sample thumbnails
           </button>
           <p className="muted">
             Public mode serves resized thumbnails and keeps the original source as a relative reference.

@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import publication from "../../public/data/publication.json";
 
 type Props = {
   open: boolean;
@@ -21,13 +22,36 @@ export function HelpModal({ open, onClose }: Props) {
         </div>
 
         <div className="help-section">
+          <h3>Sources and licenses</h3>
+          <p className="help-note">Published {publication.published_on}. {publication.counts_note}</p>
+          <dl className="help-list">
+            {publication.datasets.map((dataset) => (
+              <div key={dataset.dataset_id}>
+                <dt>{dataset.name} ({dataset.instrument})</dt>
+                <dd>
+                  <a href={dataset.source_url} target="_blank" rel="noreferrer">{dataset.title}</a>
+                  <p>{dataset.creators}</p>
+                  <p><a href={dataset.license_url} target="_blank" rel="noreferrer">{dataset.license}</a> · DOI: {dataset.doi}</p>
+                  <p>{dataset.valid_entries} valid entries; {dataset.thumbnail_count} published thumbnails.</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="help-note">{publication.modifications}</p>
+          <p className="help-note">{publication.taxonomy_credit} <a href={publication.taxonomy_source_url} target="_blank" rel="noreferrer">WoRMS terms</a></p>
+          <p className="help-note">{publication.external_evidence_note}</p>
+          <p className="help-note">{publication.code_license_note}</p>
+          <a href="/data/image_attributions.csv" download>Image attribution CSV</a>
+        </div>
+
+        <div className="help-section">
           <h3>Summary statistics</h3>
           <dl className="help-list">
             <div>
               <dt>Entries</dt>
               <dd>
                 Valid dataset-class entries. Dataset identity is preserved, so
-                LifeWatch <code>Tripos</code> and LifeWatch 2026 <code>Tripos</code>
+                LifeWatch <code>Tripos</code> and MedPlanktonSet <code>Tripos</code>
                 count as two entries even if they resolve to the same selected
                 AphiaID.
               </dd>

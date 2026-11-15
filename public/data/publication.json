@@ -1,0 +1,39 @@
+{
+  "code_license_note": "Dataset images retain their source CC BY 4.0 terms. These data licenses do not grant a reuse license for this project's own code.",
+  "counts_note": "Counts describe the frozen reviewed source cohorts, not the displayed thumbnails. Valid and invalid review evidence can overlap; do not add their totals. This is not the full Phase 3 dataset or a live taxonomy lookup.",
+  "datasets": [
+    {
+      "creators": "Wout Decrop; Rune Lagaisse; Jonas Mortelmans; Julie Muyle; Luz Amadei Mart\u00ednez; Klaas Deneudt (VLIZ)",
+      "dataset_id": "life_watch",
+      "doi": "10.5281/zenodo.16679297",
+      "instrument": "FlowCAM",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "name": "LifeWatch",
+      "source_url": "https://zenodo.org/records/16679297",
+      "thumbnail_count": 475,
+      "title": "LifeWatch observatory data: phytoplankton annotated trainingset by FlowCam imaging in the Belgian Part of the North Sea",
+      "valid_entries": 82
+    },
+    {
+      "creators": "Mente MS & Houliez E; Scalco E.; Roselli L.; Sarno D. (Stazione Zoologica Anton Dohrn)",
+      "dataset_id": "medplanktonset",
+      "doi": "10.5281/zenodo.15471023",
+      "instrument": "IFCB",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "name": "MedPlanktonSet",
+      "source_url": "https://zenodo.org/records/15471023",
+      "thumbnail_count": 608,
+      "title": "MedPlanktonSet - A dataset of labeled IFCB images from the Mediterranean Sea",
+      "valid_entries": 137
+    }
+  ],
+  "external_evidence_note": "AlgaeBase (Guiry & Guiry, University of Galway), via Global Names Verifier, and Catalogue of Life are credited in the retained factual name/status evidence and record links. Their websites, descriptions, imagery and raw response caches are not bundled or relicensed. Project review conclusions do not imply provider endorsement.",
+  "kind": "licensed_real_data_subset",
+  "modifications": "Selected from QC/EDA-eligible records. Existing review thumbnails were resized and JPEG-encoded by the research pipeline; this publication copies those thumbnails unchanged. Source labels are retained separately from project-reviewed taxonomy and mapping decisions.",
+  "published_on": "2026-11-15",
+  "sample_limit_per_label": 5,
+  "taxonomy_credit": "WoRMS Editorial Board (2026). World Register of Marine Species. Available from https://www.marinespecies.org at VLIZ. doi:10.14284/170. This is a limited, previously reviewed taxonomy snapshot, not a redistribution of the whole database. Terms checked 2026-11-15; taxon records were not refreshed for this publication.",
+  "taxonomy_source_url": "https://www.marinespecies.org/about.php"
+}
