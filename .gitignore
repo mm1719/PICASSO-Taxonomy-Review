@@ -1,6 +1,8 @@
 node_modules/
 dist/
 coverage/
+test-results/
+playwright-report/
 .vite/
 *.tsbuildinfo
 .env
@@ -14,4 +16,4 @@ checkpoints/
 *.pt
 *.pth
 *.ckpt
-# Only explicitly reviewed synthetic public fixtures belong in this candidate.
+# Only explicitly reviewed public fixtures belong in this repository.

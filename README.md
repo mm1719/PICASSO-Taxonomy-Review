@@ -22,7 +22,7 @@ Drafts live in memory, not browser storage. Repeated clicks on the active edit m
 
 This independent Vercel project is connected only to `mm1719/PICASSO-Taxonomy-Review`, with `main` as its production branch and the repository root as its build root. It does not replace or synchronize with the original Phase 3 website or research data. No environment variables or backend services are required.
 
-Vercel uses the settings in `vercel.json`: a locked dependency install, the full build including publication-contract and license-notice checks, and `dist` as the output. The primary URL is public; generated deployment URLs retain Vercel's default protection. See [the deployment validation record](docs/VALIDATION.md) for tested behavior and remaining browser checks.
+Vercel uses the settings in `vercel.json`: a locked dependency install, the full build including publication-contract and license-notice checks, and `dist` as the output. The primary URL is public; generated deployment URLs retain Vercel's default protection. See [the deployment validation record](docs/VALIDATION.md) for tested behavior and remaining limits.
 
 ## Run locally
 
@@ -39,6 +39,17 @@ npm run dev
 The development server binds **127.0.0.1**. It serves only static application assets and the checked-in public subset. There is no backend, authentication, external data API, credential, or model dependency. No access to the private Phase 3 workspace is needed to build or test this repository. Build artifacts and installed dependencies are excluded from Git.
 
 Builds generate `dist/THIRD_PARTY_LICENSES.md` from the installed bundled dependencies. JavaScript chunks reference that file, and build-time tests verify the required package versions and complete license texts. Deploy the complete `dist/` directory, including the notices; these notices do not license this project's own code.
+
+### Browser acceptance
+
+```bash
+npx playwright install chromium --only-shell
+npm run test:browser
+```
+
+This uses disposable Chromium contexts, not your regular browser profile. The default target is the independent public PICASSO site; network requests are restricted to GET/HEAD. Tests exercise real downloads/uploads, mapping round trips, rejected-import and history-replacement protection, credits, thumbnails, desktop/mobile layouts and every published asset's hash. The full thumbnail set is decoded once on desktop; mobile repeats the interactive workflows.
+
+To test an already running local build preview, set `PICASSO_BASE_URL=http://127.0.0.1:4173`. The configuration refuses other non-loopback hosts, including the original Phase 3 site. Screenshots, CSVs and failure traces go to ignored `test-results/` (override with `PICASSO_TEST_OUTPUT`); the HTML report is in ignored `playwright-report/`. These checks do not persist mapping decisions or run the research pipeline. Mobile emulation is not physical-device or Safari/Firefox verification.
 
 ## Published subset
 

@@ -8,6 +8,7 @@
     "build": "python3 scripts/check_public_data.py && tsc && vite build && node scripts/test_build_notices.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
+    "test:browser": "playwright test",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "build:subset": "python3 scripts/build_public_subset.py",
@@ -22,6 +23,7 @@
     "vite": "^8.1.6"
   },
   "devDependencies": {
+    "@playwright/test": "1.65.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",

@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   test: {
+    include: ["src/**/*.test.{ts,tsx}"],
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
     css: false,
@@ -13,6 +14,8 @@ export default defineConfig({
       exclude: [
         "dist/**",
         "coverage/**",
+        "e2e/**",
+        "playwright.config.ts",
         "src/**/*.test.ts",
         "src/test/**",
         "vite.config.ts",

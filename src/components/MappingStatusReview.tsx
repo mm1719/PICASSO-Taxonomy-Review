@@ -204,7 +204,7 @@ export function MappingStatusReview({ data }: Props) {
             target_id: raw.target_id?.trim() ?? "",
             source_alias: source.source_alias,
             target_alias: "",
-            notes: raw.notes?.trim() ?? "",
+            notes: raw.notes ?? "",
             validation_status: "ok",
             validation_message: ""
           })

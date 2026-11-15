@@ -220,12 +220,24 @@ describe("MappingStatusReview", () => {
     const panel = (await screen.findByRole("heading", { name: "Editable draft" })).closest("main")!;
     const alphaRow = rowByAlias(panel, "Alpha");
     expect(within(alphaRow).getByDisplayValue("b")).toBeInTheDocument();
-    expect(within(alphaRow).getByDisplayValue("imported note")).toBeInTheDocument();
+    expect(within(alphaRow).getByRole("textbox")).toHaveValue(" imported note ");
     const betaRow = rowByAlias(panel, "beta");
     expect(within(betaRow).getByRole("combobox")).toHaveValue("keep");
     const dropRow = rowByAlias(panel, "Comma, class");
     expect(within(dropRow).getByRole("combobox")).toHaveValue("drop");
     expect(within(dropRow).queryByDisplayValue("b")).not.toBeInTheDocument();
+  });
+
+  it("preserves CSV note whitespace and quoted multiline text", async () => {
+    const user = userEvent.setup();
+    render(<MappingStatusReview data={mappingData()} />);
+    const notes = '  Browser, "round trip"\n\u4fdd\u7559\u8349\u7a3f  ';
+    await user.upload(fileInput(), csvFile(
+      `action,source_id,target_id,notes\nmerge,a,b,"${notes.replace(/"/g, '""')}"\n`,
+      "notes.csv"
+    ));
+    const panel = (await screen.findByRole("heading", { name: "Editable draft" })).closest("main")!;
+    expect(within(rowByAlias(panel, "Alpha")).getByRole("textbox")).toHaveValue(notes);
   });
 
   it("does not reset edits when Edit draft is clicked again", async () => {
