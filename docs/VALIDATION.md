@@ -67,3 +67,16 @@ Verification after `npm ci --ignore-scripts --no-audit --no-fund` on Node 20.20.
 - `git diff --check`: passed. No application source, public fixture, build configuration or Node version-file changes.
 
 The audit result is a dated check of the npm advisory database, not proof that no undisclosed vulnerability exists. The retained `whatwg-encoding` deprecation warning is not an npm audit vulnerability; replacing jsdom solely to remove it was outside this security update. Real-browser and live-deployment verification remain unperformed.
+
+## 2026-11-15 independent Vercel deployment preparation
+
+The owner authorized a separate Vercel project for `mm1719/PICASSO-Taxonomy-Review`, connected to its `main` branch. The original Phase 3 project, repository and research data are outside this deployment scope.
+
+- Pinned `engines.node` to `24.x` and `.nvmrc` to `24.22.3`. This matches the original site's configured Node major without changing that site. Vercel's [version selection](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions) would otherwise resolve the previous unbounded minimum to a newer major.
+- Made the Vite preset, `npm ci --ignore-scripts`, `npm run build`, and `dist` output explicit in `vercel.json`; retained the existing SPA rewrite.
+- Downloaded Node 24.22.3 into an isolated temporary tools directory and verified its SHA-256 against the official Node release checksum. No global Node installation was changed.
+- Fresh install and `npm run coverage` on Node 24.22.3 / npm 11.19.1: **80 tests passed in 10 files**. Coverage unchanged: statements **94.08%**, branches **81.21%**, functions **94.19%**, lines **94.40%**.
+- `npm run test:fixtures`: **6 passed**. `npm run build`: passed, including synthetic asset checks and **2 build-notice tests**. `npm audit --json`: **0 vulnerabilities**.
+- Application source, synthetic fixtures and locked dependency versions are unchanged. Only the root package's Node engine metadata changed in the lockfile.
+
+This checkpoint is local deployment preparation, not evidence of a live site or real-browser acceptance.

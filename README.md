@@ -18,7 +18,7 @@ Drafts live in memory, not browser storage. Repeated clicks on the active edit m
 
 ## Run locally
 
-Use the Node version in `.nvmrc` (20.20.2) or a compatible version satisfying `package.json`, plus Python 3 for fixture generation and build-time asset checks.
+Use the Node version in `.nvmrc` (24.22.3) or a compatible Node 24.x version, plus Python 3 for fixture generation and build-time asset checks. The Node major is pinned to keep local checks and Vercel builds aligned.
 
 ```bash
 npm ci --ignore-scripts
